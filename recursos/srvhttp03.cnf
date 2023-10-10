@@ -1,0 +1,8 @@
+ModoOp: local
+Verbose: false
+IdCliente: WebClient010
+DiretorioBD: /home/antonio/bd/
+DiretorioRecursos: recursos/
+Publicador: false
+
+
