@@ -186,28 +186,24 @@ public class XML {
         MsgXMLArray[IdNv0][IdNv1][8][0] = "VZBMB";		MsgXMLArray[IdNv0][IdNv1][8][1] = caq.vazaoBombaPoco + " L/min";
 
         IdNv1 = 3; // Grupo de 18 Variáveis de Informação da Geração Solar e do Consumo
-        MsgXMLArray[IdNv0][IdNv1][0][0] = "GERCONS";	MsgXMLArray[IdNv0][IdNv1][0][1] = "18";
+        MsgXMLArray[IdNv0][IdNv1][0][0] = "GERCONS";	MsgXMLArray[IdNv0][IdNv1][0][1] = "16";
 
         MsgXMLArray[IdNv0][IdNv1][1][0] = "VP12";		MsgXMLArray[IdNv0][IdNv1][1][1] = cc1.vECc + " V";
         MsgXMLArray[IdNv0][IdNv1][2][0] = "IS12";		MsgXMLArray[IdNv0][IdNv1][2][1] = cc1.iECc + " A";
         MsgXMLArray[IdNv0][IdNv1][3][0] = "VBAT1";		MsgXMLArray[IdNv0][IdNv1][3][1] = cc1.vSCc + " V";
         MsgXMLArray[IdNv0][IdNv1][4][0] = "ISCC1";		MsgXMLArray[IdNv0][IdNv1][4][1] = cc1.iSCc + " A";
         MsgXMLArray[IdNv0][IdNv1][5][0] = "WSCC1";		MsgXMLArray[IdNv0][IdNv1][5][1] = cc1.wSCc + " W";
-        MsgXMLArray[IdNv0][IdNv1][6][0] = "TBAT1";		MsgXMLArray[IdNv0][IdNv1][6][1] = cc1.tempBat + " C";
-
-        MsgXMLArray[IdNv0][IdNv1][7][0] = "VP34";		MsgXMLArray[IdNv0][IdNv1][7][1] = cc2.vECc + " V";
-        MsgXMLArray[IdNv0][IdNv1][8][0] = "IS34";		MsgXMLArray[IdNv0][IdNv1][8][1] = cc2.iECc + " A";
-        MsgXMLArray[IdNv0][IdNv1][9][0] = "VBAT2";		MsgXMLArray[IdNv0][IdNv1][9][1] = cc2.vSCc + " V";
-        MsgXMLArray[IdNv0][IdNv1][10][0] = "ISCC2";		MsgXMLArray[IdNv0][IdNv1][10][1] = cc2.iSCc + " A";
-        MsgXMLArray[IdNv0][IdNv1][11][0] = "WSCC2";		MsgXMLArray[IdNv0][IdNv1][11][1] = cc2.wSCc + " W";
-        MsgXMLArray[IdNv0][IdNv1][12][0] = "TBAT2";		MsgXMLArray[IdNv0][IdNv1][12][1] = cc2.tempBat + " C";
-
-        MsgXMLArray[IdNv0][IdNv1][13][0] = "ITOTCG";	MsgXMLArray[IdNv0][IdNv1][13][1] = utr.iTotCg24v + " A";
-        MsgXMLArray[IdNv0][IdNv1][14][0] = "WTOTCG";	MsgXMLArray[IdNv0][IdNv1][14][1] = utr.wTotCg24v + " W";
-        MsgXMLArray[IdNv0][IdNv1][15][0] = "ESTFT1";	MsgXMLArray[IdNv0][IdNv1][15][1] = utr.estFontesCC;
-        MsgXMLArray[IdNv0][IdNv1][16][0] = "ESTFT2";	MsgXMLArray[IdNv0][IdNv1][16][1] = utr.estFontesCC;
-        MsgXMLArray[IdNv0][IdNv1][17][0] = "ICIRCC";	MsgXMLArray[IdNv0][IdNv1][17][1] = utr.iCirCc + " A";
-        MsgXMLArray[IdNv0][IdNv1][18][0] = "WCIRCC";	MsgXMLArray[IdNv0][IdNv1][18][1] = utr.wCirCC + " W";
+        MsgXMLArray[IdNv0][IdNv1][6][0] = "VP34";		MsgXMLArray[IdNv0][IdNv1][6][1] = cc2.vECc + " V";
+        MsgXMLArray[IdNv0][IdNv1][7][0] = "IS34";		MsgXMLArray[IdNv0][IdNv1][7][1] = cc2.iECc + " A";
+        MsgXMLArray[IdNv0][IdNv1][8][0] = "VBAT2";		MsgXMLArray[IdNv0][IdNv1][8][1] = cc2.vSCc + " V";
+        MsgXMLArray[IdNv0][IdNv1][9][0] = "ISCC2";		MsgXMLArray[IdNv0][IdNv1][9][1] = cc2.iSCc + " A";
+        MsgXMLArray[IdNv0][IdNv1][10][0] = "WSCC2";		MsgXMLArray[IdNv0][IdNv1][10][1] = cc2.wSCc + " W";
+        MsgXMLArray[IdNv0][IdNv1][11][0] = "ITOTCG";	MsgXMLArray[IdNv0][IdNv1][11][1] = utr.iTotCg24v + " A";
+        MsgXMLArray[IdNv0][IdNv1][12][0] = "WTOTCG";	MsgXMLArray[IdNv0][IdNv1][12][1] = utr.wTotCg24v + " W";
+        MsgXMLArray[IdNv0][IdNv1][13][0] = "ESTFT1";	MsgXMLArray[IdNv0][IdNv1][13][1] = utr.estFontesCC;
+        MsgXMLArray[IdNv0][IdNv1][14][0] = "ESTFT2";	MsgXMLArray[IdNv0][IdNv1][14][1] = utr.estFontesCC;
+        MsgXMLArray[IdNv0][IdNv1][15][0] = "ICIRCC";	MsgXMLArray[IdNv0][IdNv1][15][1] = utr.iCirCc + " A";
+        MsgXMLArray[IdNv0][IdNv1][16][0] = "WCIRCC";	MsgXMLArray[IdNv0][IdNv1][16][1] = utr.wCirCC + " W";
 
         IdNv1 = 4; // Grupo de 20 Variáveis de Informação dos Inversores 1 e 2
         MsgXMLArray[IdNv0][IdNv1][0][0] = "INV";		MsgXMLArray[IdNv0][IdNv1][0][1] = "16";
@@ -257,7 +253,6 @@ public class XML {
 
         // Retorna a Mensagem XML completa em formato de String
         String MsgXML = StringXML(MsgXMLArray) + "  ";
-        //System.out.println(MsgXML);
         return (MsgXML);
     }
 

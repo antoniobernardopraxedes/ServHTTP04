@@ -74,20 +74,18 @@ public class Dados {
     private static int TempoBombaLigada;
 
     // Medidas da UTR2 - Comunicação com os Controladores de Carga
-    private static double VP12;              	  // 0x3100 - PV array voltage 1
-    private static double IS12;              	  // 0x3101 - PV array current 1
-    private static double WS12;              	  // 0x3102 - PV array power 1
-    private static double VBat1;             	  // 0x3104 - Battery voltage 1
-    private static double ISCC1;             	  // 0x3105 - Battery charging current 1
-    private static double WSCC1;             	  // 0x3106 - Battery charging power 1
-    private static double TBat1;             	  // 0x3106 - Battery Temperature 1
-    private static double VP34;              	  // 0x3108 - PV array voltage 2
-    private static double IS34;              	  // 0x3101 - PV array current 2
-    private static double WS34;              	  // 0x3102 - PV array power 2
-    private static double VBat2;             	  // 0x3104 - Battery voltage 2
-    private static double ISCC2;             	  // 0x3105 - Battery charging current 2
-    private static double WSCC2;             	  // 0x3106 - Battery charging power 2 (Med[45])
-    private static double TBat2;             	  // 0x3108 - Battery Temperature 2
+    private static double VP12;              	  // Medida 00: 0x3100 - PV array voltage 1
+    private static double IS12;              	  // Medida 01: 0x3101 - PV array current 1
+    private static double WS12;              	  // Medida 02: 0x3102 - PV array power 1
+    private static double VBat1;             	  // Medida 03: 0x3104 - Battery voltage 1
+    private static double ISCC1;             	  // Medida 04: 0x3105 - Battery charging current 1
+    private static double WSCC1;             	  // Medida 05: 0x3106 - Battery charging power 1
+    private static double VP34;              	  // Medida 08: 0x3100 - PV array voltage 2
+    private static double IS34;              	  // Medida 09: 0x3101 - PV array current 2
+    private static double WS34;              	  // Medida 10: 0x3102 - PV array power 2
+    private static double VBat2;             	  // Medida 11: 0x3104 - Battery voltage 2
+    private static double ISCC2;             	  // Medida 12: 0x3105 - Battery charging current 2
+    private static double WSCC2;             	  // Medida 13: 0x3106 - Battery charging power 2 (Med[45])
 
     // Estados e Medidas do Inversor 2
     private static boolean Iv2Lig;             // Estado: true = > Inversor 2 Ligado
@@ -174,6 +172,8 @@ public class Dados {
     }
 
     //******************************************************************************************************************
+    // Autor: Antonio Bernardo de Vasconcellos Praxedes  /  Data: 01/09/2023                                           *
+    //	                                                                                                               *
     // Nome do Método: MontaJsonUTR                                                                                    *
     //	                                                                                                               *
     // Funcao: monta a mensagem JSON com as informações da UTR (Unidade Terminal Remota) a partir das variáveis lidas  *
@@ -479,7 +479,6 @@ public class Dados {
                 cc1.vSCc = VBat1;
                 cc1.iSCc = ISCC1;
                 cc1.wSCc = WSCC1;
-                cc1.tempBat = TBat1;
             }
         }
 
@@ -516,7 +515,6 @@ public class Dados {
                 cc2.vSCc = VBat2;
                 cc2.iSCc = ISCC2;
                 cc2.wSCc = WSCC2;
-                cc2.tempBat = TBat2;
             }
         }
 
@@ -574,14 +572,14 @@ public class Dados {
             byte DH[] = new byte[6];
             DH = LeDataHora();
 
-            MsgReqCoAP[0] = 0x40;                    // Versão = 01 / Tipo = 00 / Token = 0000
-            MsgReqCoAP[1] = 0x01;                    // Código de Solicitação: 0.01 GET
-            ContMsgCoAP = ContMsgCoAP + 1;           // Incrementa o Identificador de mensagens
-            MsgReqCoAP[2] = ByteHigh(ContMsgCoAP);   // Byte Mais Significativo do Identificador da Mensagem
-            MsgReqCoAP[3] = ByteLow(ContMsgCoAP);    // Byte Menos Significativo do Identificador da Mensagem
-            MsgReqCoAP[4] = (byte) (0xB0 + TamURI);  // Delta: 11 - Primeira Opcao 11: Uri-path e Núm. Bytes da URI
+            MsgReqCoAP[0] = 0x40;                       // Versão = 01 / Tipo = 00 / Token = 0000
+            MsgReqCoAP[1] = 0x01;                       // Código de Solicitação: 0.01 GET
+            ContMsgCoAP = ContMsgCoAP + 1;              // Incrementa o Identificador de mensagens
+            MsgReqCoAP[2] = ByteHigh(ContMsgCoAP); // Byte Mais Significativo do Identificador da Mensagem
+            MsgReqCoAP[3] = ByteLow(ContMsgCoAP);  // Byte Menos Significativo do Identificador da Mensagem
+            MsgReqCoAP[4] = (byte) (0xB0 + TamURI);     // Delta: 11 - Primeira Opcao 11: Uri-path e Núm. Bytes da URI
             int j = 5;
-            for (int i = 0; i < TamURI; i++) {       // Carrega os codigos ASCII da URI
+            for (int i = 0; i < TamURI; i++) {          // Carrega os codigos ASCII da URI
                 char Char = URI.charAt(i);
                 int ASCII = (int) Char;
                 MsgReqCoAP[i + 5] = (byte) ASCII;
@@ -734,28 +732,22 @@ public class Dados {
         IEIv2      		 =  Med[15] / 100.0;   	 // Corrente de Entrada do Inversor 2 (12)
         VMBat       	 =  Med[16] / 100.0;     // Tensão Média Estendida do Banco de Baterias
         TempoBombaLigada =  (int)Med[17];        // Tempo da Bomba Ligada
-
         VP12        	 =  Med[18] / 100.0;     // 0x3100 - PV array voltage 1
         IS12       		 =  Med[19] / 100.0;     // 0x3101 - PV array current 1
         WS12        	 =  Med[20] / 100.0;     // 0x3102 - PV array power 1
         VBat1       	 =  Med[21] / 100.0;     // 0x3104 - Battery voltage 1
         ISCC1        	 =  Med[22] / 100.0;     // 0x3105 - Battery charging current 1
         WSCC1        	 =  Med[23] / 100.0;     // 0x3106 - Battery charging power 1
-        TBat1         	 =  Med[24] / 100.0;     // 0x3110 - Battery Temperature 1
-
+        TBat         	 =  Med[24] / 100.0;     // 0x3110 - Battery Temperature 1
         VP34         	 =  Med[26] / 100.0;     // 0x3100 - PV array voltage 2
         IS34         	 =  Med[27] / 100.0;     // 0x3101 - PV array current 2
         WS34         	 =  Med[28] / 100.0;     // 0x3102 - PV array power 2
         VBat2        	 =  Med[29] / 100.0;     // 0x3104 - Battery voltage 2
         ISCC2        	 =  Med[30] / 100.0;     // 0x3105 - Battery charging current 2
         WSCC2        	 =  Med[31] / 100.0;     // 0x3106 - Battery charging power 2 (Med[45])
-        TBat2         	 =  Med[32] / 100.0;     // 0x3110 - Battery Temperature 2
-
         WCircCC      	 =  Med[35] / 100.0;     // Potencia Consumida pelos Circuitos de 24Vcc
         WFonteCC     	 =  Med[36] / 100.0;     // Potencia Fornecida pela Fonte 24Vcc
         IBat         	 =  Med[37] / 100.0;     // Corrente de Carga ou Descarga do Banco de Baterias
-
-        TBat = TBat2;
 
         if (!Iv1Lig) {                      	 // Se o Inversor 1 estiver desligado,
             IEIv1 = 0;                      	 // zera a corrente de entrada

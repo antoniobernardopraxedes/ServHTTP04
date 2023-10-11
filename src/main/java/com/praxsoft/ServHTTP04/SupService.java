@@ -159,7 +159,7 @@ public class SupService {
     // Saida: array com a sequência de bytes do arquivo lido. Se ocorrer falha na leitura, o método retorna null.      *
     //******************************************************************************************************************
     //
-    public static byte[] LeArquivoByte(String caminho, String nomeArquivo) {
+    public static byte[] LeByte(String caminho, String nomeArquivo) {
 
         try {
             File arquivo = new File(caminho + nomeArquivo);
@@ -170,7 +170,6 @@ public class SupService {
             arquivoByte = new FileInputStream(arquivo);
             arquivoByte.read(arrayByteArquivo);
             arquivoByte.close();
-
             return arrayByteArquivo;
 
         } catch (IOException e) {

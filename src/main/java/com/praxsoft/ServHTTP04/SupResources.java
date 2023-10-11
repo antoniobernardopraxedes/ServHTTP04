@@ -38,16 +38,6 @@ public class SupResources {
         return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("text/css")).body(arquivoTxt);
     }
 
-    @GetMapping(value = "favicon.ico")
-    public ResponseEntity<?> EnviaIco() {
-
-        Terminal("Requisitado Arquivo favicon.ico", true);
-
-        String caminho = getDiretorioRecursos() + "/sup/img/";
-        byte [] arquivoImg = SupService.LeArquivoByte (caminho, "favicon.ico");
-        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/jpeg")).body(arquivoImg);
-    }
-
     @GetMapping(value = "/local001.xml")
     public ResponseEntity<?> atualizaVariaveis() throws Exception {
         String Msg = "";
