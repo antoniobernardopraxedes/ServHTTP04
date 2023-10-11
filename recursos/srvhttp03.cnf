@@ -1,5 +1,5 @@
 ModoOp: local
-Verbose: false
+Verbose: true
 IdCliente: WebClient010
 DiretorioBD: /home/antonio/bd/
 DiretorioRecursos: recursos/

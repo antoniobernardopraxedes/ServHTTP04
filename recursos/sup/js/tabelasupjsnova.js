@@ -136,8 +136,8 @@
       document.getElementById("vrede").innerHTML = valor;
       valor = geral[i].getElementsByTagName("ESTVRD")[0].childNodes[0].nodeValue;
       document.getElementById("estvrd").innerHTML = valor;
-      valor = geral[i].getElementsByTagName("TBAT")[0].childNodes[0].nodeValue;
-      document.getElementById("tbat").innerHTML = valor;
+      //valor = geral[i].getElementsByTagName("TBAT")[0].childNodes[0].nodeValue;
+      //document.getElementById("tbat").innerHTML = valor;
       //valor = geral[i].getElementsByTagName("SDBAT")[0].childNodes[0].nodeValue;
       //document.getElementById("sdbat").innerHTML = valor;
 
@@ -171,7 +171,7 @@
       document.getElementById("vbat").innerHTML = valor;
       document.getElementById("vrede").innerHTML = valor;
       document.getElementById("estvrd").innerHTML = valor;
-      document.getElementById("tbat").innerHTML = valor;
+      document.getElementById("tbat2").innerHTML = valor;
 
     }
 
@@ -259,6 +259,8 @@
       document.getElementById("vbat2").innerHTML = valor;
       valor = gercons[i].getElementsByTagName("WSCC2")[0].childNodes[0].nodeValue;
       document.getElementById("wscc2").innerHTML = valor;
+      valor = gercons[i].getElementsByTagName("TBAT2")[0].childNodes[0].nodeValue;
+      document.getElementById("tbat2").innerHTML = valor;
 
       // Geração e Consumo Totais e Cargas CC
       valor = gercons[i].getElementsByTagName("ITOTCG")[0].childNodes[0].nodeValue;
@@ -288,11 +290,15 @@
       document.getElementById("vbat1").innerHTML = valor;
       document.getElementById("iscc1").innerHTML = valor;
       document.getElementById("wscc1").innerHTML = valor;
+      //document.getElementById("tbat1").innerHTML = valor;
+
       document.getElementById("vp34").innerHTML = valor;
       document.getElementById("is34").innerHTML = valor;
       document.getElementById("iscc2").innerHTML = valor;
       document.getElementById("vbat2").innerHTML = valor;
       document.getElementById("wscc2").innerHTML = valor;
+      document.getElementById("tbat2").innerHTML = valor;
+
       document.getElementById("itotcg").innerHTML = valor;
       document.getElementById("wtotcg").innerHTML = valor;
       document.getElementById("estft1").innerHTML = valor;
