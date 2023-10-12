@@ -23,6 +23,7 @@ public class UTRAM {
     public double vRede;
     public String estRede;
     public double vBat;
+    public double vmBat;
     public double tBat;
     public String energiaCg1;
     public String energiaCg2;

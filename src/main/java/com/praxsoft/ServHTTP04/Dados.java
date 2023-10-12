@@ -9,6 +9,10 @@ import static com.praxsoft.ServHTTP04.SupService.*;
 
 public class Dados {
 
+    private static UTRAM utr = new UTRAM();
+    private static CC cc1 = new CC();
+    private static CC cc2 = new CC();
+
     // Estados de Comunicação
     private static boolean EstComCncMega;
     private static boolean EstComUTR;
@@ -19,13 +23,13 @@ public class Dados {
     private static String MsgComando = "";
 
     // Data e Hora
-    private static int Hora;
-    private static int Minuto;
-    private static int Segundo;
-    private static int Dia;
-    private static int Mes;
-    private static int Ano;
-    private static String CmdEx;
+    //private static int Hora;
+    //private static int Minuto;
+    //private static int Segundo;
+    //private static int Dia;
+    //private static int Mes;
+    //private static int Ano;
+    //private static String CmdEx;
 
     // Estados e Medidas Gerais
     private static boolean EstRede;
@@ -47,21 +51,21 @@ public class Dados {
 
     private static boolean FontesCCLigadas;
 
-    private static double Icarga3;       // Corrente Carga 3 (Geladeira)
-    private static double VRede;         // Tensão da Rede
-    private static double VBat;          // Tensão do Banco de Baterias
-    private static double VMBat;         // Tensão Média Estendida do Banco de Baterias
-    private static double ICircCC;       // Corrente Total dos Circuitos CC
-    private static double WCircCC;       // Potência Total dos Circuitos CC
-    private static double ITotCg;        // Corrente Total Consumida pelas Cargas
-    private static double WTotCg;        // Potência Total Consumida pelas Cargas
+    //private static double Icarga3;       // Corrente Carga 3 (Geladeira)
+    //private static double VRede;         // Tensão da Rede
+    //private static double VBat;          // Tensão do Banco de Baterias
+    //private static double VMBat;         // Tensão Média Estendida do Banco de Baterias
+    //private static double ICircCC;       // Corrente Total dos Circuitos CC
+    //private static double WCircCC;       // Potência Total dos Circuitos CC
+    //private static double ITotCg;        // Corrente Total Consumida pelas Cargas
+    //private static double WTotCg;        // Potência Total Consumida pelas Cargas
     private static double IFonteCC;      // Corrente de Saída da Fonte CC
-    private static double WFonteCC;      // Potência de Saída da Fonte CC
-    private static double IBat;          // Corrente de Carga / Descarga do Banco de Baterias
+    //private static double WFonteCC;      // Potência de Saída da Fonte CC
+    //private static double IBat;          // Corrente de Carga / Descarga do Banco de Baterias
     private static double WBat;          // Potência de Carga / Descarga do Banco de Baterias
-    private static double TBat;          // Temperatura do Banco de Baterias
-    private static int SDBat;	         // Valor de Saude das Baterias
-    private static double IFontesCC12;   // Corrente de Saída das Fontes CC1 e CC2
+    //private static double TBat;          // Temperatura do Banco de Baterias
+    //private static int SDBat;	         // Valor de Saude das Baterias
+    //private static double IFontesCC12;   // Corrente de Saída das Fontes CC1 e CC2
 
     // Estados Água
     private static boolean CircBoia;
@@ -72,45 +76,48 @@ public class Dados {
     private static boolean CxAzNvBx;
     private static boolean EdCxAzCheia;
     private static int EstadoCxAz;
-    private static int TempoBombaLigada;
+
+    //private static int TempoBombaLigada;
 
     // Medidas da UTR2 - Comunicação com os Controladores de Carga
-    private static double VP12;          	  // 0x3100 - PV array voltage 1
-    private static double IS12;            	  // 0x3101 - PV array current 1
-    private static double WS12;            	  // 0x3102 - PV array power 1
-    private static double VBat1;           	  // 0x3104 - Battery voltage 1
-    private static double ISCC1;           	  // 0x3105 - Battery charging current 1
-    private static double WSCC1;           	  // 0x3106 - Battery charging power 1
-    private static double TBat1;
+    //private static double VP12;          	  // 0x3100 - PV array voltage 1
+    //private static double IS12;            	  // 0x3101 - PV array current 1
+    //private static double WS12;            	  // 0x3102 - PV array power 1
+    //private static double VBat1;           	  // 0x3104 - Battery voltage 1
+    //private static double ISCC1;           	  // 0x3105 - Battery charging current 1
+    //private static double WSCC1;           	  // 0x3106 - Battery charging power 1
+    //private static double TBat1;
 
-    private static double VP34;               // 0x3100 - PV array voltage 2
-    private static double IS34;               // 0x3101 - PV array current 2
-    private static double WS34;               // 0x3102 - PV array power 2
-    private static double VBat2;              // 0x3104 - Battery voltage 2
-    private static double ISCC2;              // 0x3105 - Battery charging current 2
-    private static double WSCC2;              // 0x3106 - Battery charging power 2 (Med[45])
-    private static double TBat2;
+    //private static double VP34;               // 0x3100 - PV array voltage 2
+    //private static double IS34;               // 0x3101 - PV array current 2
+    //private static double WS34;               // 0x3102 - PV array power 2
+    //private static double VBat2;              // 0x3104 - Battery voltage 2
+    //private static double ISCC2;              // 0x3105 - Battery charging current 2
+    //private static double WSCC2;              // 0x3106 - Battery charging power 2 (Med[45])
+    //private static double TBat2;
 
     // Estados e Medidas do Inversor 2
     private static boolean Iv2Lig;             // Estado: true = > Inversor 2 Ligado
-    private static double IEIv2;                  // Corrente de Entrada
-    private static double WEIv2;                  // Potência de Entrada
-    private static double VSIv2;                  // Tensão de Saída
-    private static double ISInv2;                 // Corrente de Saída
-    private static double WSInv2;                 // Potência de Saída
-    private static double TDInv2;                 // Temperatura do Driver
-    private static double TTInv2;                 // Temperatura do Transformador
+
+    //private static double IEIv2;                  // Corrente de Entrada
+    //private static double WEIv2;                  // Potência de Entrada
+    //private static double VSIv2;                  // Tensão de Saída
+    //private static double ISInv2;                 // Corrente de Saída
+    //private static double WSInv2;                 // Potência de Saída
+    //private static double TDInv2;                 // Temperatura do Driver
+    //private static double TTInv2;                 // Temperatura do Transformador
 
     // Estados e Medidas do Inversor 1
     private static boolean Iv1Lig;             // Estado: true = > Inversor 1 Ligado
     private static boolean DJEINV1;            //
-    private static double IEIv1;          		   // Corrente de Entrada do Inversor 1
-    private static double WEIv1;             	   // Potência de Entrada do Inversor 1
-    private static double VSIv1;                  // Tensão de Saída do Inversor 1
-    private static double ISInv1;                 // Corrente de Saída do Inversor 1
-    private static double WSInv1;                 // Potência de Saída do Inversor 1
-    private static double TDInv1;                 // Temperatura do Driver do Inversor 1
-    private static double TTInv1;                 // Temperatura do Transformador do Inversor 1
+
+    //private static double IEIv1;          		   // Corrente de Entrada do Inversor 1
+    //private static double WEIv1;             	   // Potência de Entrada do Inversor 1
+    //private static double VSIv1;                  // Tensão de Saída do Inversor 1
+    //private static double ISInv1;                 // Corrente de Saída do Inversor 1
+    //private static double WSInv1;                 // Potência de Saída do Inversor 1
+    //private static double TDInv1;                 // Temperatura do Driver do Inversor 1
+    //private static double TTInv1;                 // Temperatura do Transformador do Inversor 1
 
     // Estados e Medidas Água Quente
     private static boolean EstComAQ;
@@ -125,14 +132,15 @@ public class Dados {
     // Estados e Medidas do Concentrador Arduino Uno e do Multimedidor Kron
     private static boolean EstComConcArd;
     private static boolean EstComKron;
-    private static double TensaoKron;
-    private static double CorrenteKron;
-    private static double PotenciaAtivaKron;
-    private static double PotenciaReativaKron;
-    private static double FrequenciaKron;
-    private static double FatorPotenciaKron;
-    private static double EnergiaAtivaPositivaKron;
-    private static double EnergiaAtivaNegativaKron;
+
+    //private static double TensaoKron;
+    //private static double CorrenteKron;
+    //private static double PotenciaAtivaKron;
+    //private static double PotenciaReativaKron;
+    //private static double FrequenciaKron;
+    //private static double FatorPotenciaKron;
+    //private static double EnergiaAtivaPositivaKron;
+    //private static double EnergiaAtivaNegativaKron;
 
     private static byte[] MsgValor = new byte[45];
     private static byte[] Medidas = new byte[12];
@@ -192,13 +200,12 @@ public class Dados {
     //         do Concentrador Arduino Mega.                                                                           *
     //                                                                                                                 *
     // Entrada: não tem                                                                                                *
-    //                                                                                                                 *
     // Saida: String com a mensagem JSON                                                                               *
     //******************************************************************************************************************
     //
     public static String MontaJsonUTR(String cmdEx) {
 
-        UTRAM utr = new UTRAM();
+        //UTRAM utr = new UTRAM();
 
         // Estados Gerais da UTR
         String StrMdOp = "";				// Modo de Operação (Economia / Normal)
@@ -237,7 +244,7 @@ public class Dados {
 
                 StrEstRede = "";            // Estado de Tensão da Rede
                 if (EstRede) {
-                    if (VRede > 190.0) {
+                    if (utr.vRede > 190.0) {
                         StrEstRede = "Normal";
                     }
                     else {
@@ -401,51 +408,61 @@ public class Dados {
                 }
 
                 // Data, Hora e Mensagem de Estado
-                utr.hora = Hora;
-                utr.minuto = Minuto;
-                utr.segundo = Segundo;
-                utr.dia = Dia;
-                utr.mes = Mes;
-                utr.ano = Ano;
-                utr.cmdEx = CmdEx;
+
+                //utr.hora = Hora;
+                //utr.minuto = Minuto;
+                //utr.segundo = Segundo;
+                //utr.dia = Dia;
+                //utr.mes = Mes;
+                //utr.ano = Ano;
+
+                //utr.cmdEx = CmdEx;
 
                 // Estados e Medidas Gerais
                 utr.modoOp = StrMdOp;
                 utr.modoCom = StrMdCom;
                 utr.modoCtrl1 = StrMdCtrl1;
                 utr.modoCtrl = StrMdCtrl;
-                utr.vRede = FormataDouble2CD(VRede);
+                //utr.vRede = FormataDouble2CD(VRede);
                 utr.estRede = StrEstRede;
-                utr.vBat = FormataDouble2CD(VBat);
-                utr.tBat = FormataDouble2CD(TBat);
+
+                //utr.vBat = FormataDouble2CD(VBat);
+                utr.tBat = cc1.tbat;
+
                 utr.energiaCg1 = StrEnergiaCarga1;
                 utr.energiaCg2 = StrEnergiaCarga2;
                 utr.energiaCg3 = StrEnergiaCarga3;
                 utr.energiaCg4 = StrEnergiaCarga4;
-                utr.iCg3 = FormataDouble2CD(Icarga3);
-                utr.iTotCg24v = FormataDouble2CD(ITotCg);
-                utr.wTotCg24v = FormataDouble2CD(WTotCg);
-                utr.iCirCc = FormataDouble2CD(ICircCC);
-                utr.wCirCC = FormataDouble2CD(WCircCC);
+                //utr.iCg3 = FormataDouble2CD(Icarga3);
+
+                //utr.iTotCg24v = FormataDouble2CD(ITotCg);
+                //utr.wTotCg24v = FormataDouble2CD(WTotCg);
+
+                //utr.iCirCc = FormataDouble2CD(ICircCC);
+                //utr.wCirCC = FormataDouble2CD(WCircCC);
+
                 utr.estFontesCC = StrEstFontesCC;
 
                 // Estados e Medidas dos Inversores 1 e 2
                 utr.estInv2 = StrEstIv2;
-                utr.iEInv2 = FormataDouble2CD(IEIv2);
-                utr.wEInv2 = FormataDouble2CD(WEIv2);
-                utr.vSInv2 = FormataDouble2CD(VSIv2);
-                utr.iSInv2 = FormataDouble2CD(ISInv2);
-                utr.wSInv2 = FormataDouble2CD(WSInv2);
-                utr.tDInv2 = FormataDouble2CD(TDInv2);
-                utr.tTInv2 = FormataDouble2CD(TTInv2);
+
+                //utr.iEInv2 = FormataDouble2CD(IEIv2);
+                //utr.wEInv2 = FormataDouble2CD(WEIv2);
+                //utr.vSInv2 = FormataDouble2CD(VSIv2);
+                //utr.iSInv2 = FormataDouble2CD(ISInv2);
+                //utr.wSInv2 = FormataDouble2CD(WSInv2);
+                //utr.tDInv2 = FormataDouble2CD(TDInv2);
+                //utr.tTInv2 = FormataDouble2CD(TTInv2);
+
                 utr.estInv1 = StrEstIv1;
-                utr.iEInv1 = FormataDouble2CD(IEIv1);
-                utr.wEInv1 = FormataDouble2CD(WEIv1);
-                utr.vSInv1 = FormataDouble2CD(VSIv1);
-                utr.iSInv1 = FormataDouble2CD(ISInv1);
-                utr.wSInv1 = FormataDouble2CD(WSInv1);
-                utr.tDInv1 = FormataDouble2CD(TDInv1);
-                utr.tTInv1 = FormataDouble2CD(TTInv1);
+
+                //utr.iEInv1 = FormataDouble2CD(IEIv1);
+                //utr.wEInv1 = FormataDouble2CD(WEIv1);
+                //utr.vSInv1 = FormataDouble2CD(VSIv1);
+                //utr.iSInv1 = FormataDouble2CD(ISInv1);
+                //utr.wSInv1 = FormataDouble2CD(WSInv1);
+                //utr.tDInv1 = FormataDouble2CD(TDInv1);
+                //utr.tTInv1 = FormataDouble2CD(TTInv1);
 
                 // Estados e Medidas da Caixa d'Água e da Bonba do Poço
                 utr.estCxAzul = StrEstCxAzul;
@@ -453,7 +470,7 @@ public class Dados {
                 utr.estBomba = StrEstBomba;
                 utr.estDjBoia = StrEstDJBoia;
                 utr.estDjBomba = StrEstDJBomba;
-                utr.tmpBombaLig = TempoBombaLigada;
+                //utr.tmpBombaLig = TempoBombaLigada;
 
             } // if (EstComUTR)
         } // if (EstComCncMega)
@@ -472,28 +489,28 @@ public class Dados {
     //         Concentrador Arduino Mega.                                                                              *
     //                                                                                                                 *
     // Entrada: não tem                                                                                                *
-    //                                                                                                                 *
     // Saida: String com a mensagem JSON                                                                               *
     //******************************************************************************************************************
     //
     public static String MontaJsonCC1() {
 
-        CC cc1 = new CC();
+        //CC cc1 = new CC();
+
         cc1.estComConcMega = EstComCncMega;
         if (EstComCncMega) {
             cc1.estComCc = EstComCC1;
-            if (EstComCC1) {
-                cc1.vECc = VP12;
-                cc1.iECc = IS12;
-                cc1.vSCc = VBat1;
-                cc1.iSCc = ISCC1;
-                cc1.wSCc = WSCC1;
-                cc1.tbat = TBat1;
-            }
+
+            //if (EstComCC1) {
+            //    cc1.vECc = VP12;
+            //    cc1.iECc = IS12;
+            //    cc1.vSCc = VBat1;
+            //    cc1.iSCc = ISCC1;
+            //    cc1.wSCc = WSCC1;
+            //    cc1.tbat = TBat1;
+            //}
         }
         Gson gson = new Gson();
         String MsgJson = gson.toJson(cc1);
-
         return(MsgJson);
 
     } // Fim do Método
@@ -507,24 +524,25 @@ public class Dados {
     //         Concentrador Arduino Mega.                                                                              *
     //                                                                                                                 *
     // Entrada: não tem                                                                                                *
-    //                                                                                                                 *
     // Saida: String com a mensagem JSON                                                                               *
     //******************************************************************************************************************
     //
     public static String MontaJsonCC2() {
 
-        CC cc2 = new CC();
+        //CC cc2 = new CC();
+
         cc2.estComConcMega = EstComCncMega;
         if (EstComCncMega) {
             cc2.estComCc = EstComCC2;
-            if (EstComCC2) {
-                cc2.vECc = VP34;
-                cc2.iECc = IS34;
-                cc2.vSCc = VBat2;
-                cc2.iSCc = ISCC2;
-                cc2.wSCc = WSCC2;
-                cc2.tbat = TBat2;
-            }
+
+            //if (EstComCC2) {
+            //    //cc2.vECc = VP34;
+            //    cc2.iECc = IS34;
+            //    cc2.vSCc = VBat2;
+            //    cc2.iSCc = ISCC2;
+            //    cc2.wSCc = WSCC2;
+            //    cc2.tbat = TBat2;
+            //}
         }
         Gson gson = new Gson();
         String MsgJson = gson.toJson(cc2);
@@ -658,12 +676,12 @@ public class Dados {
     //
     public static void CarregaVarConcArdMega(byte[] receiveData1) {
 
-        Hora = receiveData1[21];
-        Minuto = receiveData1[22];
-        Segundo = receiveData1[23];
-        Dia = receiveData1[24];
-        Mes = receiveData1[25];
-        Ano = receiveData1[26];
+        utr.hora = receiveData1[21];
+        utr.minuto = receiveData1[22];
+        utr.segundo = receiveData1[23];
+        utr.dia = receiveData1[24];
+        utr.mes = receiveData1[25];
+        utr.ano = receiveData1[26];
 
         // Estados de Comunicação
         EstComUTR = receiveData1[27] > 0;
@@ -723,60 +741,68 @@ public class Dados {
         }
 
         // Carrega as medidas lidas do Concentrador Arduino Mega nas variaveis
-        VBat        	 =  Med[0] / 100.0;      // Tensão do Banco de Baterias
-        TDInv2     		 =  Med[2] / 100.0;      // Temperatura do Driver do Inversor 2 (8)
-        ICircCC    		 =  Med[3] / 1000.0;     // Corrente Total dos Circuitos CC
-        VSIv2      		 =  Med[4] / 100.0;      // Tensão de Saída do Inversor 2 (Invertido)
-        VSIv1      		 =  Med[6] / 100.0;      // Tensão de Saída do Inversor 1 (Invertido)
-        VRede      		 =  Med[5] / 100.0;      // Tensão da Rede
-        TTInv2     		 =  Med[7] / 100.0;      // Temperatura do Transformador do Inversor 2 (9)
-        TDInv1     		 =  Med[8] / 100.0;      // Temperatura do Driver do Inversor 1 (2)
-        TTInv1     		 =  Med[9] / 100.0;   	 // Temperatura do Transformador do Inversor 1 (7)
-        ISInv1     		 = (Med[10] * 7) / 1000; // Corrente de Saída do Inversor 1 (13)
+        utr.vBat      	 =  Med[0] / 100.0;      // Tensão do Banco de Baterias
+        utr.tDInv2 		 =  Med[2] / 100.0;      // Temperatura do Driver do Inversor 2 (8)
+        utr.iCirCc 		 =  Med[3] / 1000.0;     // Corrente Total dos Circuitos CC
+        utr.vSInv2 		 =  Med[4] / 100.0;      // Tensão de Saída do Inversor 2 (Invertido)
+        utr.vSInv1 		 =  Med[6] / 100.0;      // Tensão de Saída do Inversor 1 (Invertido)
+        utr.vRede  		 =  Med[5] / 100.0;      // Tensão da Rede
+        utr.tTInv2 		 =  Med[7] / 100.0;      // Temperatura do Transformador do Inversor 2 (9)
+        utr.tDInv1 		 =  Med[8] / 100.0;      // Temperatura do Driver do Inversor 1 (2)
+        utr.tTInv1 		 =  Med[9] / 100.0;   	 // Temperatura do Transformador do Inversor 1 (7)
+        utr.iSInv1 		 = (Med[10] * 7) / 1000; // Corrente de Saída do Inversor 1 (13)
         IFonteCC   		 =  Med[11] / 100.0;     // Corrente de Saída da Fonte CC
-        IEIv1      		 =  Med[12] / 100.0;   	 // Corrente de Entrada do Inversor 1 (15)
-        ISInv2     		 =  Med[13] / 1000.0;  	 // Corrente de Saída do Inversor 2 (10)
-        Icarga3    		 =  Med[14] / 1000.0;    // Corrente Carga 3 (Geladeira)
-        IEIv2      		 =  Med[15] / 100.0;   	 // Corrente de Entrada do Inversor 2 (12)
-        VMBat       	 =  Med[16] / 100.0;     // Tensão Média Estendida do Banco de Baterias
-        TempoBombaLigada =  (int)Med[17];        // Tempo da Bomba Ligada
-        VP12        	 =  Med[18] / 100.0;     // 0x3100 - PV array voltage 1
-        IS12       		 =  Med[19] / 100.0;     // 0x3101 - PV array current 1
-        WS12        	 =  Med[20] / 100.0;     // 0x3102 - PV array power 1
-        VBat1       	 =  Med[21] / 100.0;     // 0x3104 - Battery voltage 1
-        ISCC1        	 =  Med[22] / 100.0;     // 0x3105 - Battery charging current 1
-        WSCC1        	 =  Med[23] / 100.0;     // 0x3106 - Battery charging power 1
-        TBat1         	 =  Med[24] / 100.0;     // 0x3110 - Battery Temperature 1
-        VP34         	 =  Med[26] / 100.0;     // 0x3100 - PV array voltage 2
-        IS34         	 =  Med[27] / 100.0;     // 0x3101 - PV array current 2
-        WS34         	 =  Med[28] / 100.0;     // 0x3102 - PV array power 2
-        VBat2        	 =  Med[29] / 100.0;     // 0x3104 - Battery voltage 2
-        ISCC2        	 =  Med[30] / 100.0;     // 0x3105 - Battery charging current 2
-        WSCC2        	 =  Med[31] / 100.0;     // 0x3106 - Battery charging power 2 (Med[45])
-        TBat2         	 =  Med[32] / 100.0;     // 0x3110 - Battery Temperature 1
-        WCircCC      	 =  Med[35] / 100.0;     // Potencia Consumida pelos Circuitos de 24Vcc
-        WFonteCC     	 =  Med[36] / 100.0;     // Potencia Fornecida pela Fonte 24Vcc
-        IBat         	 =  Med[37] / 100.0;     // Corrente de Carga ou Descarga do Banco de Baterias
+        utr.iEInv1 		 =  Med[12] / 100.0;   	 // Corrente de Entrada do Inversor 1 (15)
+        utr.iSInv2 		 =  Med[13] / 1000.0;  	 // Corrente de Saída do Inversor 2 (10)
+        utr.iCg3   		 =  Med[14] / 1000.0;    // Corrente Carga 3 (Geladeira)
+        utr.iEInv2 		 =  Med[15] / 100.0;   	 // Corrente de Entrada do Inversor 2 (12)
+        utr.vmBat      	 =  Med[16] / 100.0;     // Tensão Média Estendida do Banco de Baterias
+        utr.tmpBombaLig  =  (int)Med[17];        // Tempo da Bomba Ligada
+
+        cc1.vECc       	 =  Med[18] / 100.0;     // 0x3100 - PV array voltage 1
+        cc1.iECc   		 =  Med[19] / 100.0;     // 0x3101 - PV array current 1
+        cc1.wECc       	 =  Med[20] / 100.0;     // 0x3102 - PV array power 1
+        cc1.vSCc       	 =  Med[21] / 100.0;     // 0x3104 - Battery voltage 1
+        cc1.iSCc       	 =  Med[22] / 100.0;     // 0x3105 - Battery charging current 1
+        cc1.wSCc       	 =  Med[23] / 100.0;     // 0x3106 - Battery charging power 1
+        cc1.tbat       	 =  Med[24] / 100.0;     // 0x3110 - Battery Temperature 1
+
+        cc2.vECc      	 =  Med[26] / 100.0;     // 0x3100 - PV array voltage 2
+        cc2.iECc       	 =  Med[27] / 100.0;     // 0x3101 - PV array current 2
+        cc2.wECc       	 =  Med[28] / 100.0;     // 0x3102 - PV array power 2
+        cc2.vSCc       	 =  Med[29] / 100.0;     // 0x3104 - Battery voltage 2
+        cc2.iSCc       	 =  Med[30] / 100.0;     // 0x3105 - Battery charging current 2
+        cc2.wSCc       	 =  Med[31] / 100.0;     // 0x3106 - Battery charging power 2 (Med[45])
+        cc2.tbat       	 =  Med[32] / 100.0;     // 0x3110 - Battery Temperature 1
+
+        utr.wCirCC     	 =  Med[35] / 100.0;     // Potencia Consumida pelos Circuitos de 24Vcc
 
         if (!Iv1Lig) {                      	 // Se o Inversor 1 estiver desligado,
-            IEIv1 = 0;                      	 // zera a corrente de entrada
-            VSIv1 = 0;                      	 // zera a tensão de saída
-            ISInv1 = 0;                     	 // zera a corrente de saída
+            utr.iEInv1 = 0;                      	 // zera a corrente de entrada
+            utr.vSInv1 = 0;                      	 // zera a tensão de saída
+            utr.iSInv1 = 0;                     	 // zera a corrente de saída
         }
         if (!Iv2Lig) {                      	 // Se o Inversor 2 estiver desligado, zera a tensão de saída
-            IEIv2 = 0;                      	 // zera a corrente de entrada
-            VSIv2 = 0;                      	 // zera a tensão de saída
-            ISInv2 = 0;                     	 // zera a corrente de saída
+            utr.iEInv2 = 0;                      	 // zera a corrente de entrada
+            utr.vSInv2 = 0;                      	 // zera a tensão de saída
+            utr.iSInv2 = 0;                     	 // zera a corrente de saída
         }
 
-        // Variáveis Calculadas
-        WBat = (VBat * IBat)/100;	        // Potência de Carga/Descarga do Banco de Baterias
-        ITotCg = IEIv1 + IEIv2 + ICircCC; 	// Corrente Total Consumida pelas Cargas
-        WTotCg =  WEIv1 + WEIv2 + WCircCC;	// Potência Total Consumida pelas Cargas
-        WEIv2 = (VBat * IEIv2);             // Potencia de Entrada do Inversor 2 (Med[38])
-        WSInv2 = (VSIv2 * ISInv2);          // Potencia de Saida do Inversor 2 (Med[39])
-        WEIv1 = (VBat * IEIv1);             // Potência de Entrada do Inversor 1 (Med[41])
-        WSInv1 = (VSIv1 * ISInv1);	        // Potencia de Saida do Inversor 1 (Med[42])
+        // Variáveis Calculadas utr.iTotCg24v = FormataDouble2CD(ITotCg);
+        //WBat = (utr.vBat * IBat)/100;	        // Potência de Carga/Descarga do Banco de Baterias
+
+        utr.iTotCg24v = FormataDouble2CD(utr.iEInv1 + utr.iEInv2 + utr.iCirCc); 	// Corrente Total Consumida pelas Cargas
+
+        //ITotCg = IEIv1 + IEIv2 + ICircCC; 	// Corrente Total Consumida pelas Cargas
+
+        utr.wTotCg24v = FormataDouble2CD(utr.wEInv1 + utr.wEInv2 + utr.wCirCC);	// Potência Total Consumida pelas Cargas
+
+        //WTotCg =  WEIv1 + WEIv2 + WCircCC;	// Potência Total Consumida pelas Cargas
+
+        utr.wEInv2 = FormataDouble2CD(utr.vBat * utr.iEInv2);    // Potencia de Entrada do Inversor 2 (Med[38])
+        utr.wSInv2 = FormataDouble2CD(utr.vSInv2 * utr.iSInv2);  // Potencia de Saida do Inversor 2 (Med[39])
+        utr.wEInv1 = FormataDouble2CD(utr.vBat * utr.iEInv1);    // Potência de Entrada do Inversor 1 (Med[41])
+        utr.wSInv1 = FormataDouble2CD(utr.vSInv1 * utr.iSInv1);  // Potencia de Saida do Inversor 1 (Med[42])
 
     } // Fim do Método
 
@@ -790,7 +816,6 @@ public class Dados {
     //         lidas do mesmo controlador.                                                                             *
     //                                                                                                                 *
     // Entrada: não tem                                                                                                *
-    //                                                                                                                 *
     // Saida: mensagem JSON em formato binário                                                                         *
     //******************************************************************************************************************
     //
