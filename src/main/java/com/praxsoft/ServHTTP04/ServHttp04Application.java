@@ -70,9 +70,12 @@ public class ServHttp04Application implements CommandLineRunner {
 							}
 							if (cont >= Periodo) {
 								cont = 0;
-								XML.CarregaVariaveisLocal(incContMsgCoAP(), valorNumComando());
-								if (valorNumComando() > 0) {
+								if (valorNumComando() == 0) {
+									XML.CarregaVariaveisLocal(incContMsgCoAP(), 0);
+								}
+								else {
 									Terminal("Comando Recebido: " + IdComando(valorNumComando()), true);
+									XML.CarregaVariaveisLocal(incContMsgCoAP(), valorNumComando());
 									zeraNumComando();
 								}
 

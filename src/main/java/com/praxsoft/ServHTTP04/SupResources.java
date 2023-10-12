@@ -79,7 +79,6 @@ public class SupResources {
     @PostMapping(value = "/cmd={id}")
     public ResponseEntity<?> RecComando(@PathVariable("id") String id) {
         escreveNumComando(StringToInt(id));
-
         if (!isOpLocal()) {
             if (valorNumComando() == 20) {
                 Terminal("Reinicia Assinatura no Agente MQTT", true);
@@ -103,7 +102,6 @@ public class SupResources {
                 }
             }
         }
-
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .contentType(MediaType.valueOf("application/xml"))

@@ -445,10 +445,8 @@ public class Dados {
 
             } // if (EstComUTR)
         } // if (EstComCncMega)
-
         Gson gson = new Gson();
         String MsgJson = gson.toJson(utr);
-
         return(MsgJson);
 
     } // Fim do Método
@@ -470,7 +468,6 @@ public class Dados {
 
         CC cc1 = new CC();
         cc1.estComConcMega = EstComCncMega;
-
         if (EstComCncMega) {
             cc1.estComCc = EstComCC1;
             if (EstComCC1) {
@@ -481,7 +478,6 @@ public class Dados {
                 cc1.wSCc = WSCC1;
             }
         }
-
         Gson gson = new Gson();
         String MsgJson = gson.toJson(cc1);
 
@@ -506,7 +502,6 @@ public class Dados {
 
         CC cc2 = new CC();
         cc2.estComConcMega = EstComCncMega;
-
         if (EstComCncMega) {
             cc2.estComCc = EstComCC2;
             if (EstComCC2) {
@@ -517,7 +512,6 @@ public class Dados {
                 cc2.wSCc = WSCC2;
             }
         }
-
         Gson gson = new Gson();
         String MsgJson = gson.toJson(cc2);
 
