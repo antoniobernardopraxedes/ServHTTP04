@@ -78,7 +78,11 @@ public class SupResources {
 
     @PostMapping(value = "/cmd={id}")
     public ResponseEntity<?> RecComando(@PathVariable("id") String id) {
-        escreveNumComando(StringToInt(id));
+        int comandoRec = StringToInt(id);
+        if (comandoRec > valorNumComando()) {
+            Dados.EscreveMsgComando(IdComando(comandoRec));
+        }
+        escreveNumComando(comandoRec);
         if (!isOpLocal()) {
             if (valorNumComando() == 20) {
                 Terminal("Reinicia Assinatura no Agente MQTT", true);
@@ -105,7 +109,7 @@ public class SupResources {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .contentType(MediaType.valueOf("application/xml"))
-                .body(XML.MontaMensagem("Comando: " + IdComando(valorNumComando())));
+                .body(XML.MontaMensagem("Comando " + Dados.LeMsgComando()));
     }
 
 }

@@ -16,6 +16,7 @@ public class Dados {
     private static boolean EstComCC2;
     private static int ContMsgCoAP;
     private static int numComando = 0;
+    private static String MsgComando = "";
 
     // Data e Hora
     private static int Hora;
@@ -74,18 +75,21 @@ public class Dados {
     private static int TempoBombaLigada;
 
     // Medidas da UTR2 - Comunicação com os Controladores de Carga
-    private static double VP12;              	  // Medida 00: 0x3100 - PV array voltage 1
-    private static double IS12;              	  // Medida 01: 0x3101 - PV array current 1
-    private static double WS12;              	  // Medida 02: 0x3102 - PV array power 1
-    private static double VBat1;             	  // Medida 03: 0x3104 - Battery voltage 1
-    private static double ISCC1;             	  // Medida 04: 0x3105 - Battery charging current 1
-    private static double WSCC1;             	  // Medida 05: 0x3106 - Battery charging power 1
-    private static double VP34;              	  // Medida 08: 0x3100 - PV array voltage 2
-    private static double IS34;              	  // Medida 09: 0x3101 - PV array current 2
-    private static double WS34;              	  // Medida 10: 0x3102 - PV array power 2
-    private static double VBat2;             	  // Medida 11: 0x3104 - Battery voltage 2
-    private static double ISCC2;             	  // Medida 12: 0x3105 - Battery charging current 2
-    private static double WSCC2;             	  // Medida 13: 0x3106 - Battery charging power 2 (Med[45])
+    private static double VP12;          	  // 0x3100 - PV array voltage 1
+    private static double IS12;            	  // 0x3101 - PV array current 1
+    private static double WS12;            	  // 0x3102 - PV array power 1
+    private static double VBat1;           	  // 0x3104 - Battery voltage 1
+    private static double ISCC1;           	  // 0x3105 - Battery charging current 1
+    private static double WSCC1;           	  // 0x3106 - Battery charging power 1
+    private static double TBat1;
+
+    private static double VP34;               // 0x3100 - PV array voltage 2
+    private static double IS34;               // 0x3101 - PV array current 2
+    private static double WS34;               // 0x3102 - PV array power 2
+    private static double VBat2;              // 0x3104 - Battery voltage 2
+    private static double ISCC2;              // 0x3105 - Battery charging current 2
+    private static double WSCC2;              // 0x3106 - Battery charging power 2 (Med[45])
+    private static double TBat2;
 
     // Estados e Medidas do Inversor 2
     private static boolean Iv2Lig;             // Estado: true = > Inversor 2 Ligado
@@ -169,6 +173,14 @@ public class Dados {
 
     public static void zeraNumComando() {
         numComando = 0;
+    }
+
+    public static void EscreveMsgComando(String Msg) {
+        MsgComando = Msg;
+    }
+
+    public static String LeMsgComando() {
+        return MsgComando;
     }
 
     //******************************************************************************************************************
@@ -476,6 +488,7 @@ public class Dados {
                 cc1.vSCc = VBat1;
                 cc1.iSCc = ISCC1;
                 cc1.wSCc = WSCC1;
+                cc1.tbat = TBat1;
             }
         }
         Gson gson = new Gson();
@@ -510,6 +523,7 @@ public class Dados {
                 cc2.vSCc = VBat2;
                 cc2.iSCc = ISCC2;
                 cc2.wSCc = WSCC2;
+                cc2.tbat = TBat2;
             }
         }
         Gson gson = new Gson();
@@ -732,13 +746,14 @@ public class Dados {
         VBat1       	 =  Med[21] / 100.0;     // 0x3104 - Battery voltage 1
         ISCC1        	 =  Med[22] / 100.0;     // 0x3105 - Battery charging current 1
         WSCC1        	 =  Med[23] / 100.0;     // 0x3106 - Battery charging power 1
-        TBat         	 =  Med[24] / 100.0;     // 0x3110 - Battery Temperature 1
+        TBat1         	 =  Med[24] / 100.0;     // 0x3110 - Battery Temperature 1
         VP34         	 =  Med[26] / 100.0;     // 0x3100 - PV array voltage 2
         IS34         	 =  Med[27] / 100.0;     // 0x3101 - PV array current 2
         WS34         	 =  Med[28] / 100.0;     // 0x3102 - PV array power 2
         VBat2        	 =  Med[29] / 100.0;     // 0x3104 - Battery voltage 2
         ISCC2        	 =  Med[30] / 100.0;     // 0x3105 - Battery charging current 2
         WSCC2        	 =  Med[31] / 100.0;     // 0x3106 - Battery charging power 2 (Med[45])
+        TBat2         	 =  Med[32] / 100.0;     // 0x3110 - Battery Temperature 1
         WCircCC      	 =  Med[35] / 100.0;     // Potencia Consumida pelos Circuitos de 24Vcc
         WFonteCC     	 =  Med[36] / 100.0;     // Potencia Fornecida pela Fonte 24Vcc
         IBat         	 =  Med[37] / 100.0;     // Corrente de Carga ou Descarga do Banco de Baterias

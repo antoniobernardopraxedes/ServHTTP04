@@ -76,7 +76,7 @@ public class ServHttp04Application implements CommandLineRunner {
 								else {
 									Terminal("Comando Recebido: " + IdComando(valorNumComando()), true);
 									XML.CarregaVariaveisLocal(incContMsgCoAP(), valorNumComando());
-									zeraNumComando();
+									Dados.zeraNumComando();
 								}
 
 								if (isPublicador()) {

@@ -9,5 +9,5 @@ public class CC {
     public double vSCc;
     public double iSCc;
     public double wSCc;
-
+    public double tbat;
 }
