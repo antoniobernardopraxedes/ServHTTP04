@@ -14,22 +14,9 @@ public class Dados {
     private static CC cc2 = new CC();
 
     // Estados de Comunicação
-    private static boolean EstComCncMega;
-    private static boolean EstComUTR;
-    private static boolean EstComCC1;
-    private static boolean EstComCC2;
     private static int ContMsgCoAP;
     private static int numComando = 0;
     private static String MsgComando = "";
-
-    // Data e Hora
-    //private static int Hora;
-    //private static int Minuto;
-    //private static int Segundo;
-    //private static int Dia;
-    //private static int Mes;
-    //private static int Ano;
-    //private static String CmdEx;
 
     // Estados e Medidas Gerais
     private static boolean EstRede;
@@ -41,83 +28,29 @@ public class Dados {
     private static boolean HabCarga2;
     private static boolean HabCarga3;
     private static boolean HabCarga4;
-    private static boolean EstadoInversor1;
-    private static boolean EstadoInversor2;
     private static boolean EstadoCarga3;
-
     private static boolean EnergiaCarga1;
     private static boolean EnergiaCarga2;
     private static boolean EnergiaCarga3;
-
     private static boolean FontesCCLigadas;
-
-    //private static double Icarga3;       // Corrente Carga 3 (Geladeira)
-    //private static double VRede;         // Tensão da Rede
-    //private static double VBat;          // Tensão do Banco de Baterias
-    //private static double VMBat;         // Tensão Média Estendida do Banco de Baterias
-    //private static double ICircCC;       // Corrente Total dos Circuitos CC
-    //private static double WCircCC;       // Potência Total dos Circuitos CC
-    //private static double ITotCg;        // Corrente Total Consumida pelas Cargas
-    //private static double WTotCg;        // Potência Total Consumida pelas Cargas
-    private static double IFonteCC;      // Corrente de Saída da Fonte CC
-    //private static double WFonteCC;      // Potência de Saída da Fonte CC
-    //private static double IBat;          // Corrente de Carga / Descarga do Banco de Baterias
-    private static double WBat;          // Potência de Carga / Descarga do Banco de Baterias
-    //private static double TBat;          // Temperatura do Banco de Baterias
-    //private static int SDBat;	         // Valor de Saude das Baterias
-    //private static double IFontesCC12;   // Corrente de Saída das Fontes CC1 e CC2
+    private static double IFonteCC;
+    private static double WBat;
 
     // Estados Água
     private static boolean CircBoia;
     private static boolean BoiaCxAzul;
     private static boolean CircBomba;
     private static boolean AlRedeBomba;
-    private static boolean BombaLigada;
-    private static boolean CxAzNvBx;
-    private static boolean EdCxAzCheia;
     private static int EstadoCxAz;
-
-    //private static int TempoBombaLigada;
-
-    // Medidas da UTR2 - Comunicação com os Controladores de Carga
-    //private static double VP12;          	  // 0x3100 - PV array voltage 1
-    //private static double IS12;            	  // 0x3101 - PV array current 1
-    //private static double WS12;            	  // 0x3102 - PV array power 1
-    //private static double VBat1;           	  // 0x3104 - Battery voltage 1
-    //private static double ISCC1;           	  // 0x3105 - Battery charging current 1
-    //private static double WSCC1;           	  // 0x3106 - Battery charging power 1
-    //private static double TBat1;
-
-    //private static double VP34;               // 0x3100 - PV array voltage 2
-    //private static double IS34;               // 0x3101 - PV array current 2
-    //private static double WS34;               // 0x3102 - PV array power 2
-    //private static double VBat2;              // 0x3104 - Battery voltage 2
-    //private static double ISCC2;              // 0x3105 - Battery charging current 2
-    //private static double WSCC2;              // 0x3106 - Battery charging power 2 (Med[45])
-    //private static double TBat2;
 
     // Estados e Medidas do Inversor 2
     private static boolean Iv2Lig;             // Estado: true = > Inversor 2 Ligado
-
-    //private static double IEIv2;                  // Corrente de Entrada
-    //private static double WEIv2;                  // Potência de Entrada
-    //private static double VSIv2;                  // Tensão de Saída
-    //private static double ISInv2;                 // Corrente de Saída
-    //private static double WSInv2;                 // Potência de Saída
-    //private static double TDInv2;                 // Temperatura do Driver
-    //private static double TTInv2;                 // Temperatura do Transformador
+    private static boolean EstadoInversor2;
 
     // Estados e Medidas do Inversor 1
     private static boolean Iv1Lig;             // Estado: true = > Inversor 1 Ligado
     private static boolean DJEINV1;            //
-
-    //private static double IEIv1;          		   // Corrente de Entrada do Inversor 1
-    //private static double WEIv1;             	   // Potência de Entrada do Inversor 1
-    //private static double VSIv1;                  // Tensão de Saída do Inversor 1
-    //private static double ISInv1;                 // Corrente de Saída do Inversor 1
-    //private static double WSInv1;                 // Potência de Saída do Inversor 1
-    //private static double TDInv1;                 // Temperatura do Driver do Inversor 1
-    //private static double TTInv1;                 // Temperatura do Transformador do Inversor 1
+    private static boolean EstadoInversor1;
 
     // Estados e Medidas Água Quente
     private static boolean EstComAQ;
@@ -132,15 +65,6 @@ public class Dados {
     // Estados e Medidas do Concentrador Arduino Uno e do Multimedidor Kron
     private static boolean EstComConcArd;
     private static boolean EstComKron;
-
-    //private static double TensaoKron;
-    //private static double CorrenteKron;
-    //private static double PotenciaAtivaKron;
-    //private static double PotenciaReativaKron;
-    //private static double FrequenciaKron;
-    //private static double FatorPotenciaKron;
-    //private static double EnergiaAtivaPositivaKron;
-    //private static double EnergiaAtivaNegativaKron;
 
     private static byte[] MsgValor = new byte[45];
     private static byte[] Medidas = new byte[12];
@@ -208,261 +132,129 @@ public class Dados {
         //UTRAM utr = new UTRAM();
 
         // Estados Gerais da UTR
-        String StrMdOp = "";				// Modo de Operação (Economia / Normal)
-        String StrMdCom = "";				// Modo de Comando (Local / Remoto)
-        String StrMdCtrl1 = "";				// Modo de Controle da Carga 1 (Manual / Automatico)
-        String StrMdCtrl = "";				// Modo de Controle das Cargas 2,3 e 4 (Manual / Automatico)
-        String StrEstRede = "";
+        String StrMdOp = "-----";				// Modo de Operação (Economia / Normal)
+        String StrMdCom = "-----";				// Modo de Comando (Local / Remoto)
+        String StrMdCtrl1 = "-----";			// Modo de Controle da Carga 1 (Manual / Automatico)
+        String StrMdCtrl = "-----";				// Modo de Controle das Cargas 2,3 e 4 (Manual / Automatico)
+        String StrEstRede = "-----";
 
-        String StrEnergiaCarga1 = "";  		// Energia Carga 1 (Rede / Inversor 2) (CT2Inv)
-        String StrEnergiaCarga2 = "";  		// Energia Carga 2 (Rede / Inversor 2) (CT1Inv)
-        String StrEnergiaCarga3 = "";  		// Energia Carga 3 (Rede / Inversor 2) (CT3Inv)
-        String StrEnergiaCarga4 = "";		// Energia Carga 4 (Rede / Inversor 1) (Iv1Lig)
+        String StrEnergiaCarga1 = "-----";  	// Energia Carga 1 (Rede / Inversor 2) (CT2Inv)
+        String StrEnergiaCarga2 = "-----";  	// Energia Carga 2 (Rede / Inversor 2) (CT1Inv)
+        String StrEnergiaCarga3 = "-----";  	// Energia Carga 3 (Rede / Inversor 2) (CT3Inv)
+        String StrEnergiaCarga4 = "-----";		// Energia Carga 4 (Rede / Inversor 1) (Iv1Lig)
 
-        String StrEstFontesCC = "";			// Estado das Fonte CA - 24Vcc 1 (Desligadas / Ligadas)
+        String StrEstFontesCC = "-----";		// Estado das Fonte CA - 24Vcc 1 (Desligadas / Ligadas)
 
         // Estados dos Inversores 1 e 2
-        String StrEstIv2 = "";
-        String StrEstIv1 = "";
+        String StrEstIv2 = "-----";
+        String StrEstIv1 = "-----";
 
         // Estados da Caixa d'Água e da Bomba do Poço
-        String StrEstCxAzul = "";			// Estado da Caixa d'Água (Precisa Encher / Cheia)
-        String StrNivCxAzul = "";			// Nível da Caixa d'Água (Normal /Baixo)
-        String StrEstBomba = "";			// Estado da Bomba (Desligada / Ligada)
-        String StrEstDJBoia = "";			// Estado do Disjuntor da Boia (Desligado / Ligado)
-        String StrEstDJBomba = "";			// Estado do Disjuntor da Bomba (Desligado / Ligado)
+        String StrEstCxAzul = "-----";			// Estado da Caixa d'Água (Precisa Encher / Cheia)
+        String StrNivCxAzul = "-----";			// Nível da Caixa d'Água (Normal /Baixo)
+        String StrEstBomba = "-----";			// Estado da Bomba (Desligada / Ligada)
+        String StrEstDJBoia = "-----";			// Estado do Disjuntor da Boia (Desligado / Ligado)
+        String StrEstDJBomba = "-----";			// Estado do Disjuntor da Bomba (Desligado / Ligado)
 
         // Informações provenientes do Concentrador Arduíno Mega: UTR, Controlador de Carga 1 e Controlador de Carga 2
-        if (EstComCncMega) {
+        if (utr.estComConcMega ) {
+             if (utr.estComUtr) {
 
-            // Estados de Comunicação
-            utr.estComConcMega = EstComCncMega;
-            utr.estComUtr = EstComUTR;
-            utr.cmdEx = cmdEx;
+                StrEstRede = "";
+                if (EstRede) { if (utr.vRede > 190.0) { StrEstRede = "Normal"; } else { StrEstRede = "Baixa"; } }
+                else { StrEstRede = "Falta CA"; }
 
-            if (EstComUTR) {    // Estado de Comunicação: Concentrador Arduíno Mega - UTR
+                if (MdOp) { StrMdOp = "Normal"; } else { StrMdOp = "Economia"; }
+                if (MdCom) { StrMdCom = "Remoto"; } else { StrMdCom = "Local"; }
+                if (MdCtrl1) { StrMdCtrl1 = "Automatico"; } else { StrMdCtrl1 = "Manual"; }
+                if (MdCtrl) { StrMdCtrl = "Automatico"; } else { StrMdCtrl = "Manual"; }
 
-                StrEstRede = "";            // Estado de Tensão da Rede
-                if (EstRede) {
-                    if (utr.vRede > 190.0) {
-                        StrEstRede = "Normal";
-                    }
-                    else {
-                        StrEstRede = "Baixa";
-                    }
-                }
-                else {
-                    StrEstRede = "Falta CA";
-                }
+                StrEnergiaCarga1 = "Rede";
+                if (EnergiaCarga1) { StrEnergiaCarga1 = "Inversor 1"; }
+                else { if (HabCarga1) { StrEnergiaCarga1 = "Rede (Hab)"; } }
 
-                if (MdOp) {                         // Modo de Operação
-                    StrMdOp = "Normal";
-                }
-                else {
-                    StrMdOp = "Economia";
-                }
+                StrEnergiaCarga2 = "Rede";
+                if (EnergiaCarga2) { StrEnergiaCarga2 = "Inversor 1"; }
+                else { if (HabCarga2) { StrEnergiaCarga2 = "Rede (Hab)"; } }
 
-                if (MdCom) {                        // Modo de Comando
-                    StrMdCom = "Remoto";
-                }
-                else {
-                    StrMdCom = "Local";
-                }
-
-                if (MdCtrl1) {                      // Modo de Controle Carga 1
-                    StrMdCtrl1 = "Automatico";
-                }
-                else {
-                    StrMdCtrl1 = "Manual";
-                }
-
-                if (MdCtrl) {                       // Modo de Controle Cargas 2, 3 e 4
-                    StrMdCtrl = "Automatico";
-                }
-                else {
-                    StrMdCtrl = "Manual";
-                }
-
-                StrEnergiaCarga1 = "Rede";          // Energia Carga 1
-                if (EnergiaCarga1) {
-                    StrEnergiaCarga1 = "Inversor 1";
-                }
-                else {
-                    if (HabCarga1) {
-                        StrEnergiaCarga1 = "Rede (Hab)";
-                    }
-                }
-
-                StrEnergiaCarga2 = "Rede";          // Energia Carga 2
-                if (EnergiaCarga2) {
-                    StrEnergiaCarga2 = "Inversor 1";
-                }
-                else {
-                    if (HabCarga2) {
-                        StrEnergiaCarga2 = "Rede (Hab)";
-                    }
-                }
-
-                StrEnergiaCarga3 = "Rede";          // Energia Carga 3
-                if (EnergiaCarga3) {
-                    StrEnergiaCarga3 = "Inversor 2";
-                }
-                else {
-                    if (HabCarga3) {
-                        StrEnergiaCarga3 = "Rede (Hab)";
-                    }
-                }
+                StrEnergiaCarga3 = "Rede";
+                if (EnergiaCarga3) { StrEnergiaCarga3 = "Inversor 2"; }
+                else { if (HabCarga3) { StrEnergiaCarga3 = "Rede (Hab)"; } }
 
                 StrEstCxAzul = "";
                 StrNivCxAzul = "";
                 switch (EstadoCxAz) {
-                    case 0:  //  EstadoCxAz = 0 => Estado da Caixa Azul = Indefinido
+                    case 0:
                         StrEstCxAzul = "Indefinido";
                         StrNivCxAzul = "Indefinido";
                         break;
 
-                    case 1:  //  EstadoCxAz = 1 => Estado da Caixa Azul = Precisa Encher Nivel Baixo
+                    case 1:
                         StrEstCxAzul = "Precisa Encher";
                         StrNivCxAzul = "Baixo";
                         break;
 
-                    case 2:  //  EstadoCxAz = 2 => Estado da Caixa Azul = Precisa Encher Nivel Normal
+                    case 2:
                         StrEstCxAzul = "Precisa Encher";
                         StrNivCxAzul = "Normal";
                         break;
 
-                    case 3:  //  EstadoCxAz = 3 => Estado da Caixa Azul = Cheia
+                    case 3:
                         StrEstCxAzul = "Cheia";
                         StrNivCxAzul = "Normal";
                         break;
 
-                    case 4:  //  EstadoCxAz = 4 => Estado da Caixa Azul = Falha de Sinalizacao 1
+                    case 4:
                         StrEstCxAzul = "Falha Boia";
                         StrNivCxAzul = "";
                         break;
 
-                    case 5:  // EstadoCxAz = 5 => Estado da Caixa Azul = Falha de Sinalizacao 2
+                    case 5:
                         StrEstCxAzul = "Falha Boia";
                         StrNivCxAzul = "";
                         break;
                 }
 
-                if (CircBoia) {
-                    StrEstDJBoia = "Ligado";
-                }
-                else {
-                    StrEstDJBoia = "Desligado";
-                }
+                if (CircBoia) { StrEstDJBoia = "Ligado"; } else { StrEstDJBoia = "Desligado"; }
 
-                if (EstRede) {
-                    if (AlRedeBomba) {
-                        StrEstDJBomba = "Ligado";
-                    }
-                    else {
-                        StrEstDJBomba = "Desligado";
-                    }
-                }
-                else {
-                    StrEstDJBomba = "Falta CA";
-                }
+                if (EstRede) { if (AlRedeBomba) { StrEstDJBomba = "Ligado"; } else { StrEstDJBomba = "Desligado"; } }
+                else { StrEstDJBomba = "Falta CA"; }
 
                 // Energia Bomba de Água do Poço
                 StrEnergiaCarga4 = "Rede";
-                if (Iv2Lig) {
-                    StrEnergiaCarga4 = "Inversor 1";
-                }
-                else {
-                    if (HabCarga4) {
-                        StrEnergiaCarga4 = "Rede (Hab)";
-                    }
-                }
+                if (Iv2Lig) { StrEnergiaCarga4 = "Inversor 1"; }
+                else { if (HabCarga4) { StrEnergiaCarga4 = "Rede (Hab)"; } }
 
-                if (CircBomba) {
-                    StrEstBomba = "Ligada";
-                }
-                else {
-                    StrEstBomba = "Desligada";
-                }
+                if (CircBomba) { StrEstBomba = "Ligada"; } else { StrEstBomba = "Desligada"; }
 
-                StrEstFontesCC = "";            		 // Estado das Fontes CC1 e CC2
-                if (EstRede) {                           // Se a tensao da Rede esta OK,
-                    if (FontesCCLigadas) {               // e se a fonte CC1 está fornecendo tensão,
-                        StrEstFontesCC = "Ligadas";    	 // Carrega a mensagem de que a fonte CC1 está ligada
-                    }
-                    else {                             	 // Se a fonte CC1 não está fornecendo tensão,
-                        StrEstFontesCC = "Desligadas"; 	 // Carrega a mensagem de que a fonte CC1 está desligada
-                    }
-                }
-                else {
-                    StrEstFontesCC = "Falta CA";
-                }
+                StrEstFontesCC = "";
+                if (EstRede) { if (FontesCCLigadas) { StrEstFontesCC = "Ligadas"; } else { StrEstFontesCC = "Desligadas"; } }
+                else { StrEstFontesCC = "Falta CA"; }
 
                 StrEstIv2 = "Desligado";
-                if (Iv2Lig) {
-                    StrEstIv2 = "Ligado";
-                }
+                if (Iv2Lig) { StrEstIv2 = "Ligado"; }
 
                 StrEstIv1 = "Desligado";
-                if (Iv1Lig) {
-                    StrEstIv1 = "Ligado";
-                }
-
-                // Data, Hora e Mensagem de Estado
-
-                //utr.hora = Hora;
-                //utr.minuto = Minuto;
-                //utr.segundo = Segundo;
-                //utr.dia = Dia;
-                //utr.mes = Mes;
-                //utr.ano = Ano;
-
-                //utr.cmdEx = CmdEx;
+                if (Iv1Lig) { StrEstIv1 = "Ligado"; }
 
                 // Estados e Medidas Gerais
                 utr.modoOp = StrMdOp;
                 utr.modoCom = StrMdCom;
                 utr.modoCtrl1 = StrMdCtrl1;
                 utr.modoCtrl = StrMdCtrl;
-                //utr.vRede = FormataDouble2CD(VRede);
                 utr.estRede = StrEstRede;
 
-                //utr.vBat = FormataDouble2CD(VBat);
                 utr.tBat = cc1.tbat;
 
                 utr.energiaCg1 = StrEnergiaCarga1;
                 utr.energiaCg2 = StrEnergiaCarga2;
                 utr.energiaCg3 = StrEnergiaCarga3;
                 utr.energiaCg4 = StrEnergiaCarga4;
-                //utr.iCg3 = FormataDouble2CD(Icarga3);
-
-                //utr.iTotCg24v = FormataDouble2CD(ITotCg);
-                //utr.wTotCg24v = FormataDouble2CD(WTotCg);
-
-                //utr.iCirCc = FormataDouble2CD(ICircCC);
-                //utr.wCirCC = FormataDouble2CD(WCircCC);
-
                 utr.estFontesCC = StrEstFontesCC;
 
                 // Estados e Medidas dos Inversores 1 e 2
                 utr.estInv2 = StrEstIv2;
-
-                //utr.iEInv2 = FormataDouble2CD(IEIv2);
-                //utr.wEInv2 = FormataDouble2CD(WEIv2);
-                //utr.vSInv2 = FormataDouble2CD(VSIv2);
-                //utr.iSInv2 = FormataDouble2CD(ISInv2);
-                //utr.wSInv2 = FormataDouble2CD(WSInv2);
-                //utr.tDInv2 = FormataDouble2CD(TDInv2);
-                //utr.tTInv2 = FormataDouble2CD(TTInv2);
-
                 utr.estInv1 = StrEstIv1;
-
-                //utr.iEInv1 = FormataDouble2CD(IEIv1);
-                //utr.wEInv1 = FormataDouble2CD(WEIv1);
-                //utr.vSInv1 = FormataDouble2CD(VSIv1);
-                //utr.iSInv1 = FormataDouble2CD(ISInv1);
-                //utr.wSInv1 = FormataDouble2CD(WSInv1);
-                //utr.tDInv1 = FormataDouble2CD(TDInv1);
-                //utr.tTInv1 = FormataDouble2CD(TTInv1);
 
                 // Estados e Medidas da Caixa d'Água e da Bonba do Poço
                 utr.estCxAzul = StrEstCxAzul;
@@ -470,7 +262,6 @@ public class Dados {
                 utr.estBomba = StrEstBomba;
                 utr.estDjBoia = StrEstDJBoia;
                 utr.estDjBomba = StrEstDJBomba;
-                //utr.tmpBombaLig = TempoBombaLigada;
 
             } // if (EstComUTR)
         } // if (EstComCncMega)
@@ -494,20 +285,14 @@ public class Dados {
     //
     public static String MontaJsonCC1() {
 
-        //CC cc1 = new CC();
-
-        cc1.estComConcMega = EstComCncMega;
-        if (EstComCncMega) {
-            cc1.estComCc = EstComCC1;
-
-            //if (EstComCC1) {
-            //    cc1.vECc = VP12;
-            //    cc1.iECc = IS12;
-            //    cc1.vSCc = VBat1;
-            //    cc1.iSCc = ISCC1;
-            //    cc1.wSCc = WSCC1;
-            //    cc1.tbat = TBat1;
-            //}
+        if (!utr.estComConcMega || !cc1.estComCc) {
+            cc1.vECc = 0;
+            cc1.iECc = 0;
+            cc1.wECc = 0;
+            cc1.vSCc = 0;
+            cc1.iSCc = 0;
+            cc1.wSCc = 0;
+            cc1.tbat = 0;
         }
         Gson gson = new Gson();
         String MsgJson = gson.toJson(cc1);
@@ -529,20 +314,14 @@ public class Dados {
     //
     public static String MontaJsonCC2() {
 
-        //CC cc2 = new CC();
-
-        cc2.estComConcMega = EstComCncMega;
-        if (EstComCncMega) {
-            cc2.estComCc = EstComCC2;
-
-            //if (EstComCC2) {
-            //    //cc2.vECc = VP34;
-            //    cc2.iECc = IS34;
-            //    cc2.vSCc = VBat2;
-            //    cc2.iSCc = ISCC2;
-            //    cc2.wSCc = WSCC2;
-            //    cc2.tbat = TBat2;
-            //}
+        if (!utr.estComConcMega || !cc2.estComCc) {
+            cc2.vECc = 0;
+            cc2.iECc = 0;
+            cc2.wECc = 0;
+            cc2.vSCc = 0;
+            cc2.iSCc = 0;
+            cc2.wSCc = 0;
+            cc2.tbat = 0;
         }
         Gson gson = new Gson();
         String MsgJson = gson.toJson(cc2);
@@ -646,14 +425,14 @@ public class Dados {
             try {
 
                 clientSocket.receive(receivePacket);
-                EstComCncMega = true;
+                utr.estComConcMega = true;
                 CarregaVarConcArdMega(MsgRecCoAP);
                 Terminal("Recebida Mensagem CoAP do Controlador", false);
                 clientSocket.close();
 
             } catch (java.net.SocketTimeoutException e) {
                 clientSocket.close();
-                EstComCncMega = false;
+                utr.estComConcMega = false;
                 Terminal("O Arduino Mega Concentrador não Respondeu ", false);
             }
 
@@ -684,9 +463,9 @@ public class Dados {
         utr.ano = receiveData1[26];
 
         // Estados de Comunicação
-        EstComUTR = receiveData1[27] > 0;
-        EstComCC1 = receiveData1[28] > 0;
-        EstComCC2 = receiveData1[29] > 0;
+        utr.estComUtr = receiveData1[27] > 0;
+        cc1.estComCc = receiveData1[28] > 0;
+        cc2.estComCc = receiveData1[29] > 0;
 
         EstRede = receiveData1[42] > 0;
         MdOp = receiveData1[43] > 0;
@@ -726,9 +505,9 @@ public class Dados {
         BoiaCxAzul = receiveData1[39] > 0;
         CircBomba = receiveData1[40] > 0;
         AlRedeBomba = receiveData1[41] > 0;
-        CxAzNvBx = receiveData1[69] > 0;
-        EdCxAzCheia = receiveData1[70] > 0;
-        BombaLigada = receiveData1[54] > 0;
+        //CxAzNvBx = receiveData1[69] > 0;
+        //EdCxAzCheia = receiveData1[70] > 0;
+        //BombaLigada = receiveData1[54] > 0;
         EstadoCxAz = receiveData1[72];
 
         // Le as Medidas de 2 bytes da mensagem recebida
