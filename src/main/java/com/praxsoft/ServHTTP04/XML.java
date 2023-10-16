@@ -241,8 +241,8 @@ public class XML {
         IdNv1 = 6; // Grupo de 6 Variáveis de Medidas do Multimedidor Kron
         MsgXMLArray[IdNv0][IdNv1][0][0] = "KRON";		MsgXMLArray[IdNv0][IdNv1][0][1] = "11";
 
-        MsgXMLArray[IdNv0][IdNv1][1][0] = "ESTCCA";		MsgXMLArray[IdNv0][IdNv1][1][1] = ImpEstCom(cen.EstComCncUno);
-        MsgXMLArray[IdNv0][IdNv1][2][0] = "ESTCK";		MsgXMLArray[IdNv0][IdNv1][2][1] = ImpEstCom(cen.EstComKron);
+        MsgXMLArray[IdNv0][IdNv1][1][0] = "ESTCCA";		MsgXMLArray[IdNv0][IdNv1][1][1] = ImpEstCom(cen.estComCncUno);
+        MsgXMLArray[IdNv0][IdNv1][2][0] = "ESTCK";		MsgXMLArray[IdNv0][IdNv1][2][1] = ImpEstCom(cen.estComKron);
         MsgXMLArray[IdNv0][IdNv1][3][0] = "TENSAOK";	MsgXMLArray[IdNv0][IdNv1][3][1] = cen.tensaoK + "";
         MsgXMLArray[IdNv0][IdNv1][4][0] = "CORRENTEK";	MsgXMLArray[IdNv0][IdNv1][4][1] = cen.correnteRedeK + "";
         MsgXMLArray[IdNv0][IdNv1][5][0] = "POTATIVK";	MsgXMLArray[IdNv0][IdNv1][5][1] = cen.potenciaAtivaRedeK + "";
