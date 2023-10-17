@@ -163,7 +163,7 @@ public class XML {
         MsgXMLArray[IdNv0][IdNv1][i][0] = "MDOP";		MsgXMLArray[IdNv0][IdNv1][i++][1] = utr.modoOp;
         MsgXMLArray[IdNv0][IdNv1][i][0] = "MDCOM";		MsgXMLArray[IdNv0][IdNv1][i++][1] = utr.modoCom;
         MsgXMLArray[IdNv0][IdNv1][i][0] = "MDCT1";		MsgXMLArray[IdNv0][IdNv1][i++][1] = utr.modoCtrl1;
-        MsgXMLArray[IdNv0][IdNv1][i][0] = "MDCT234";	MsgXMLArray[IdNv0][IdNv1][i++][1] = utr.modoCtrl;
+        MsgXMLArray[IdNv0][IdNv1][i][0] = "MDCT3";	    MsgXMLArray[IdNv0][IdNv1][i++][1] = utr.modoCtrl;
         MsgXMLArray[IdNv0][IdNv1][i][0] = "ENCG1";		MsgXMLArray[IdNv0][IdNv1][i++][1] = utr.energiaCg1;
         MsgXMLArray[IdNv0][IdNv1][i][0] = "ENCG2";		MsgXMLArray[IdNv0][IdNv1][i++][1] = utr.energiaCg2;
         MsgXMLArray[IdNv0][IdNv1][i][0] = "ENCG3";		MsgXMLArray[IdNv0][IdNv1][i++][1] = utr.energiaCg3;

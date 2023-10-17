@@ -585,14 +585,14 @@ public class SupService {
         if (Comando == 4)  { StrComando = "Modo Normal"; }
         if (Comando == 16) { StrComando = "Manual Carga 1"; }
         if (Comando == 17) { StrComando = "Automatico Carga 1"; }
-        if (Comando == 5)  { StrComando = "Manual Cargas 234"; }
-        if (Comando == 6)  { StrComando = "Automatico Cargas 234"; }
-        if (Comando == 7) { StrComando = "Habilita Carga 1"; }
-        if (Comando == 8) { StrComando = "Desabilita Carga 1"; }
-        if (Comando == 9) { StrComando = "Habilita Carga 2"; }
-        if (Comando == 10) { StrComando = "Desabilita Carga 2"; }
-        if (Comando == 11) { StrComando = "Habilita Carga 3"; }
-        if (Comando == 12) { StrComando = "Desabilita Carga 3"; }
+        if (Comando == 5)  { StrComando = "Desabilita Carga 3 falta CA"; }
+        if (Comando == 6)  { StrComando = "Habilita Carga 3 falta CA"; }
+        if (Comando == 7) { StrComando = "Carga 1 para Inversor"; }
+        if (Comando == 8) { StrComando = "Carga 1 para Rede"; }
+        if (Comando == 9) { StrComando = "Carga 2 para Inversor"; }
+        if (Comando == 10) { StrComando = "Carga 2 para Rede"; }
+        if (Comando == 11) { StrComando = "Carga 3 para Inversor"; }
+        if (Comando == 12) { StrComando = "Carga 3 para Rede"; }
         if (Comando == 13) { StrComando = "Habilita Carga 4"; }
         if (Comando == 14) { StrComando = "Desabilita Carga 4"; }
         if (Comando == 15) { StrComando = "Apaga Indicadores de Falha"; }
@@ -607,7 +607,6 @@ public class SupService {
     // Funcao: converte um valor byte para inteiro (conversao sem sinal)                                               *
     // Entrada: valor byte  (-128 a +127)                                                                              *
     // Saida: valor (inteiro) sempre positivo de 0 a 255                                                               *
-    //                                                                                                                 *
     //******************************************************************************************************************
     //
     public static int BytetoInt(byte valor) {
@@ -625,7 +624,6 @@ public class SupService {
     // Funcao: converte dois bytes em sequencia de um array para inteiro (conversao sem sinal)                        *
     // Entrada: dois bytes consecutivos (LSB e MSB) sem sinal de 0 a 255                                              *
     // Saida: valor (inteiro) sempre positivo de 0 a 65535                                                            *
-    //                                                                                                                *
     //*****************************************************************************************************************
     //
     public static int DoisBytesInt(int LSByte, int MSByte) {
@@ -644,7 +642,6 @@ public class SupService {
     // Funcao: converte dois bytes em sequencia de um array para inteiro (conversao sem sinal)                        *
     // Entrada: dois bytes consecutivos (LSB e MSB) sem sinal de 0 a 255                                              *
     // Saida: valor (inteiro) sempre positivo de 0 a 65535                                                            *
-    //                                                                                                                *
     //*****************************************************************************************************************
     //
     public static int TwoBytetoInt(byte LSByte, byte MSByte) {
@@ -663,7 +660,6 @@ public class SupService {
     // Funcao: converte tres bytes em sequencia de um array para inteiro (conversao sem sinal)                        *
     // Entrada: dois bytes consecutivos (LSB e MSB) sem sinal de 0 a 255                                              *
     // Saida: valor (inteiro) sempre positivo de 0 a 65535                                                            *
-    //                                                                                                                *
     //*****************************************************************************************************************
     //
     public static int ThreeBytetoInt(int LSByte, int MSByte, int HSByte) {
@@ -685,7 +681,6 @@ public class SupService {
     // Funcao: converte um inteiro positivo para uma string no formato HH:MM:SS  (hora:minuto:segundo)                *
     // Entrada: valor inteiro em segundos                                                                             *
     // Saida: string do numero no formato "parte inteira","duas casas decimais"                                       *
-    //                                                                                                                *
     //*****************************************************************************************************************
     //
     static String FormAnaHora(int valor) {
@@ -715,7 +710,6 @@ public class SupService {
     // Funcao: converte um caracter numerico em um valor numerico de 0 a 9                                            *
     // Entrada: caracter: '0' a '9'                                                                                   *
     // Saida: byte (valor numerico de 0 a 9)                                                                          *
-    //                                                                                                                *
     //*****************************************************************************************************************
     //
     static int CharToByte(char caracter) {
@@ -751,7 +745,6 @@ public class SupService {
     // Funcao: converte um caracter numerico em um valor numerico de 0 a 9                                            *
     // Entrada: caracter: '0' a '9'                                                                                   *
     // Saida: int (valor numerico de 0 a 9)                                                                           *
-    //                                                                                                                *
     //*****************************************************************************************************************
     //
     static int ChToInt(char caracter) {
@@ -787,7 +780,6 @@ public class SupService {
     // Funcao: converte dois caracteres numericos em um valor numerico de 00 a 99                                     *
     // Entrada: caracteres dezena e unidade ('0' a '9')                                                               *
     // Saida: byte (valor numerico de 00 a 99)                                                                        *
-    //                                                                                                                *
     //*****************************************************************************************************************
     //
     //static int TwoCharToByte(char Ch10, char Ch1) {
@@ -801,7 +793,6 @@ public class SupService {
     // Funcao: converte dois caracteres numericos em um valor numerico de 00 a 99                                     *
     // Entrada: caracteres dezena e unidade ('0' a '9')                                                               *
     // Saida: int (valor numerico de 00 a 99)                                                                        *
-    //                                                                                                                *
     //*****************************************************************************************************************
     //
     static int TwoCharToInt(char Ch10, char Ch1) {
@@ -815,7 +806,6 @@ public class SupService {
     // Funcao: converte quatro caracteres numericos em um valor numerico de 0000 a 9999                               *
     // Entrada: caracteres milhar, centena, dezena e unidade ('0' a '9')                                              *
     // Saida: int (valor numerico de 0000 a 9999)                                                                     *
-    //                                                                                                                *
     //*****************************************************************************************************************
     //
     static int FourCharToInt(char Ch1000, char Ch100, char Ch10, char Ch1) {
@@ -829,7 +819,6 @@ public class SupService {
     // Funcao: converte uma string de até quatro caracteres numericos em um valor numerico de 0000 a 9999             *
     // Entrada: string com um numero entre 0 e 9999                                                                   *
     // Saida: int (valor numerico de 0000 a 9999 correspondente à string de entrada)                                  *
-    //                                                                                                                *
     //*****************************************************************************************************************
     //
     public static int StringToInt(String StNm) {
@@ -857,7 +846,6 @@ public class SupService {
     // Funcao: obtem o byte menos significativo de um valor inteiro                                                   *
     // Entrada: valor inteiro                                                                                         *
     // Saida: byte menos significativo                                                                                *
-    //                                                                                                                *
     //*****************************************************************************************************************
     //
     public static byte ByteLow(int valor) {

@@ -120,8 +120,8 @@
       document.getElementById("mdcom").innerHTML = ModoComando;
       //valor = geral[i].getElementsByTagName("MDCT1")[0].childNodes[0].nodeValue;
       //document.getElementById("mdct1").innerHTML = valor;
-      //valor = geral[i].getElementsByTagName("MDCT234")[0].childNodes[0].nodeValue;
-      //document.getElementById("mdct234").innerHTML = valor;
+      valor = geral[i].getElementsByTagName("MDCT3")[0].childNodes[0].nodeValue;
+      document.getElementById("mdct3").innerHTML = valor;
       valor = geral[i].getElementsByTagName("ENCG1")[0].childNodes[0].nodeValue;
       document.getElementById("encg1").innerHTML = valor;
       valor = geral[i].getElementsByTagName("ENCG2")[0].childNodes[0].nodeValue;

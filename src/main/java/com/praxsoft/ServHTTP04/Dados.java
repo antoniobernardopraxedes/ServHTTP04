@@ -369,19 +369,17 @@ public class Dados {
                 if (MdOp) { utr.modoOp = "Normal"; } else { utr.modoOp = "Economia"; }
                 if (MdCom) { utr.modoCom = "Remoto"; } else { utr.modoCom = "Local"; }
                 if (MdCtrl1) { utr.modoCtrl1 = "Automatico"; } else { utr.modoCtrl1 = "Manual"; }
-                if (MdCtrl) { utr.modoCtrl = "Automatico"; } else { utr.modoCtrl = "Manual"; }
+                if (MdCtrl) { utr.modoCtrl = "Hab"; } else { utr.modoCtrl = "     "; }
 
                 utr.energiaCg1 = "Rede";
                 if (EnergiaCarga1) { utr.energiaCg1 = "Inversor 1"; }
-                else { if (HabCarga1) { utr.energiaCg1 = "Rede (Hab)"; } }
+                else { if (HabCarga1) { utr.energiaCg1 = "Rede (Inv)"; } else { utr.energiaCg1 = "Rede"; } }
 
-                utr.energiaCg2 = "Rede";
                 if (EnergiaCarga2) { utr.energiaCg2 = "Inversor 1"; }
-                else { if (HabCarga2) { utr.energiaCg2 = "Rede (Hab)"; } }
+                else { if (HabCarga2) { utr.energiaCg2 = "Rede (Inv)"; } else { utr.energiaCg2 = "Rede"; } }
 
-                utr.energiaCg3 = "Rede";
                 if (EnergiaCarga3) { utr.energiaCg3 = "Inversor 1"; }
-                else { if (HabCarga3) { utr.energiaCg3 = "Rede (Hab)"; } }
+                else { utr.energiaCg3 = "Rede"; }
 
                 utr.estCxAzul = "";
                 utr.nivCxAzul = "";
@@ -429,7 +427,6 @@ public class Dados {
 
                 if (CircBomba) { utr.estBomba = "Ligada"; } else { utr.estBomba = "Desligada"; }
 
-                utr.estFontesCC = "";
                 if (EstRede) { if (FontesCCLigadas) { utr.estFontesCC = "Ligadas"; } else { utr.estFontesCC = "Desligadas"; } }
                 else { utr.estFontesCC = "Falta CA"; }
 
@@ -586,7 +583,7 @@ public class Dados {
                 caq.tempBoiler = TwoBytetoInt(MsgBinRec[48], MsgBinRec[49]) / 100.0;
                 caq.tempPlacaSolar = TwoBytetoInt(MsgBinRec[51], MsgBinRec[52]) / 100.0;
                 caq.tempoBombaAqLigada = TwoBytetoInt(MsgBinRec[66], MsgBinRec[67]);
-                caq.vazaoBombaPoco = TwoBytetoInt(MsgBinRec[76], MsgBinRec[77]) / 4.8;
+                caq.vazaoBombaPoco = FormataDouble2CD(TwoBytetoInt(MsgBinRec[76], MsgBinRec[77]) / 4.8);
             }
             catch(java.net.SocketTimeoutException e) {
                 caq.estComAq = false;
