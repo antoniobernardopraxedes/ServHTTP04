@@ -18,6 +18,7 @@ public class SupResources {
 
     @GetMapping(value = "/supcom")
     public ResponseEntity<?> supHtml(@RequestHeader(value = "User-Agent") String userAgent) {
+        Terminal("Envia Arquivo HTML", true);
         String nomeArquivo = "TabelaSupNova.html";
         String caminho = getDiretorioRecursos() + "/sup/";
         String arquivoTxt = LeArquivoTexto(caminho, nomeArquivo);
@@ -26,6 +27,7 @@ public class SupResources {
 
     @GetMapping(value = "tabelasupjsnova.js")
     public ResponseEntity<?> EnviaJavascript() {
+        Terminal("Envia Arquivo JavaScript", true);
         String caminho = getDiretorioRecursos() + "/sup/js/";
         String arquivoTxt = LeArquivoTexto(caminho, "tabelasupjsnova.js");
         return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("text/javascript")).body(arquivoTxt);
@@ -33,6 +35,7 @@ public class SupResources {
 
     @GetMapping(value = "style.css")
     public ResponseEntity<?> EnviaCss() {
+        Terminal("Envia Arquivo CSS", true);
         String caminho = getDiretorioRecursos() + "/sup/css/";
         String arquivoTxt = LeArquivoTexto(caminho, "style.css");
         return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("text/css")).body(arquivoTxt);
@@ -74,6 +77,14 @@ public class SupResources {
                 .status(HttpStatus.OK)
                 .contentType(MediaType.valueOf("application/xml"))
                 .body(XML.MontaMensagem(CmdEx));
+    }
+
+    @GetMapping(value = "favicon.ico")
+    public ResponseEntity<?> EnviaIcone() {
+        Terminal("Envia Arquivo do Ícone", true);
+        String caminho = getDiretorioRecursos() + "/sup/img/";
+        byte[] icone = SupService.LeArquivoByte(caminho, "favicon.ico");
+        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/vnd.microsoft.icon")).body(icone);
     }
 
     @PostMapping(value = "/cmd={id}")

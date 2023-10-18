@@ -1,10 +1,8 @@
 package com.praxsoft.ServHTTP04;
 
 import com.google.gson.Gson;
-
 import java.io.IOException;
 import java.net.*;
-
 import static com.praxsoft.ServHTTP04.SupService.*;
 
 public class Dados {
@@ -19,8 +17,6 @@ public class Dados {
     private static int ContMsgCoAP;
     private static int numComando = 0;
     private static String MsgComando = "";
-
-    private static byte[] MsgValor = new byte[45];
 
     public static int incContMsgCoAP() {
         ContMsgCoAP++;
@@ -362,7 +358,6 @@ public class Dados {
                 boolean AlRedeBomba = receiveData1[41] > 0;
                 int EstadoCxAz = receiveData1[72];
 
-                utr.estRede = "";
                 if (EstRede) { if (utr.vRede > 190.0) { utr.estRede = "Normal"; } else { utr.estRede = "Baixa"; } }
                 else { utr.estRede = "Falta CA"; }
 
@@ -371,7 +366,6 @@ public class Dados {
                 if (MdCtrl1) { utr.modoCtrl1 = "Automatico"; } else { utr.modoCtrl1 = "Manual"; }
                 if (MdCtrl) { utr.modoCtrl = "Hab"; } else { utr.modoCtrl = "     "; }
 
-                utr.energiaCg1 = "Rede";
                 if (EnergiaCarga1) { utr.energiaCg1 = "Inversor 1"; }
                 else { if (HabCarga1) { utr.energiaCg1 = "Rede (Inv)"; } else { utr.energiaCg1 = "Rede"; } }
 
@@ -422,19 +416,18 @@ public class Dados {
 
                 // Energia Bomba de Água do Poço
                 utr.energiaCg4 = "Rede";
-                if (Iv2Lig) { utr.energiaCg4 = "Inversor 1"; }
+                if (Iv2Lig) { utr.energiaCg4 = "Inversor 2"; }
                 else { if (HabCarga4) { utr.energiaCg4 = "Rede (Hab)"; } }
 
                 if (CircBomba) { utr.estBomba = "Ligada"; } else { utr.estBomba = "Desligada"; }
 
-                if (EstRede) { if (FontesCCLigadas) { utr.estFontesCC = "Ligadas"; } else { utr.estFontesCC = "Desligadas"; } }
+                if (EstRede) {
+                    if (FontesCCLigadas) { utr.estFontesCC = "Ligadas"; } else { utr.estFontesCC = "Desligadas"; }
+                }
                 else { utr.estFontesCC = "Falta CA"; }
 
-                utr.estInv2 = "Desligado";
-                if (Iv2Lig) { utr.estInv2 = "Ligado"; }
-
-                utr.estInv1 = "Desligado";
-                if (Iv1Lig) { utr.estInv1 = "Ligado"; }
+                if (Iv2Lig) { utr.estInv2 = "Ligado"; } else { utr.estInv2 = "Desligado"; }
+                if (Iv1Lig) { utr.estInv1 = "Ligado"; } else { utr.estInv1 = "Desligado"; }
 
                 // Le as Medidas de 2 bytes da mensagem recebida
                 int NumMed = 48;
@@ -644,7 +637,6 @@ public class Dados {
 
     } // Fim do Método
 
-
     //******************************************************************************************************************
     // Nome do Método: ModbusKron                                                                                      *
     //                                                                                                                 *
@@ -661,55 +653,55 @@ public class Dados {
         int TamMsgRsp = 64;
         byte[] MsgReq = new byte[TamMsgReq];
         byte[] MsgBinRec = new byte[TamMsgRsp];
-        double Valor = 0.0;
-        int cont = 0;
+        double Valor = 0;
         cen.estComKron = false;
 
-        while ((!cen.estComKron) && (cont < 3)) {
-            cont = cont + 1;
-            try {
+        try {
+            MsgReq[8] = 1;              // Endereço do Multimedidor
+            MsgReq[9] = (byte) funcao;  // Função MODBUS
 
-                MsgReq[8]= 1;	          // Endereço do Multimedidor
-                MsgReq[9]= (byte)funcao;  // Função MODBUS
+            if (funcao == 16) {
+                EndReg = 2;
+            }
 
-                if (funcao == 16) {	EndReg = 2; }
+            MsgReq[10] = 0;                // Campo 1: Função 4 = Registro Inicial (MSB)
+            MsgReq[11] = (byte) EndReg;    // Campo 2: Função 4 = Registro Inicial (LSB)
+            MsgReq[12] = 0;                // Campo 3: Função 4 = Número de Registros (MSB)
+            MsgReq[13] = 2;                // Campo 4: Função 4 = Número de Registros (LSB)
 
-                MsgReq[10]= 0;	            // Campo 1: Função 4 = Registro Inicial (MSB)
-                MsgReq[11]= (byte)EndReg;	// Campo 2: Função 4 = Registro Inicial (LSB)
-                MsgReq[12]= 0;	            // Campo 3: Função 4 = Número de Registros (MSB)
-                MsgReq[13]= 2;	            // Campo 4: Função 4 = Número de Registros (LSB)
+            MsgReq[14] = 4;                // Campo 5 = Número de Bytes ( 4 )
+            MsgReq[15] = 0;            // Campo 6 ( F2 )  - Valor a programar (RTC)
+            MsgReq[16] = 0;              // Campo 7 ( F1 )  - Valor a programar (RTC)
+            MsgReq[17] = 32;             // Campo 8 ( F0 )  - Valor a programar (RTC)
+            MsgReq[18] = 65;                // Campo 9 ( EXP ) - Valor a programar (RTC)
 
-                MsgReq[14]= 4;	            // Campo 5 = Número de Bytes ( 4 )
-                MsgReq[15]= 0;  	        // Campo 6 ( F2 )  - Valor a programar (RTC)
-                MsgReq[16]= 0;              // Campo 7 ( F1 )  - Valor a programar (RTC)
-                MsgReq[17]= 32;             // Campo 8 ( F0 )  - Valor a programar (RTC)
-                MsgReq[18]= 65;	            // Campo 9 ( EXP ) - Valor a programar (RTC)
+            DatagramSocket clientSocket = new DatagramSocket();
+            InetAddress IPAddress = InetAddress.getByName(EndIP);
+            clientSocket.setSoTimeout(2000);
 
-                DatagramSocket clientSocket = new DatagramSocket();
-                InetAddress IPAddress = InetAddress.getByName(EndIP);
-                clientSocket.setSoTimeout(2000);
+            int cont = 0;
+            while ((!cen.estComCncUno || !cen.estComKron) && (cont < 3)) {
+
+                cont++;
                 DatagramPacket sendPacket = new DatagramPacket(MsgReq, TamMsgReq, IPAddress, Porta);
                 clientSocket.send(sendPacket);
-
-                Terminal("Enviada mensagem de requisição para o Multimedidor Kron", false);
+                Terminal("Enviada requisição Modbus Kron - Reg = " + EndReg + " (" + cont + ")", false);
 
                 // Espera a Mensagem Binária de Resposta. Se a mensagem de resposta  for recebida, carrega nas variáveis
                 try {
                     DatagramPacket receivePacket = new DatagramPacket(MsgBinRec, TamMsgRsp);
                     clientSocket.receive(receivePacket);
                     cen.estComCncUno = true;
-                    MsgValor[0] = 0;
-
                     int NumBytesMsg = MsgBinRec[4];
-                    if (NumBytesMsg >= 9) {
 
+                    if (NumBytesMsg >= 9) {
                         int EndRec = MsgBinRec[8];
                         int FuncaoRec = MsgBinRec[9];
                         int NumBytes = MsgBinRec[10];
 
                         if ((EndRec == 1) && (FuncaoRec == funcao) && (NumBytes == 4)) {
                             cen.estComKron = true;
-                            Terminal("Recebida mensagem Kron com " + NumBytesMsg + " Bytes" , false);
+                            Terminal("Recebida mensagem Kron com " + NumBytesMsg + " Bytes", false);
 
                             byte f2 = MsgBinRec[11];
                             byte f1 = MsgBinRec[12];
@@ -717,41 +709,32 @@ public class Dados {
                             byte exp = MsgBinRec[14];
                             Valor = ConverteIEEE754PfValor(f0, f1, f2, exp);
 
-                            MsgValor[0] = 1;              // Estado de Comunicação com o Multimedidor: OK = 1.
-                            MsgValor[1] = MsgBinRec[11];  // f2
-                            MsgValor[2] = MsgBinRec[12];  // f1
-                            MsgValor[3] = MsgBinRec[13];  // f0
-                            MsgValor[4] = MsgBinRec[14];  // exp
-
                             cen.medida0 = TwoBytetoInt(MsgBinRec[32], MsgBinRec[33]);
                             cen.medida1 = TwoBytetoInt(MsgBinRec[34], MsgBinRec[35]);
                             cen.medida2 = TwoBytetoInt(MsgBinRec[36], MsgBinRec[37]);
                             cen.medida3 = TwoBytetoInt(MsgBinRec[38], MsgBinRec[39]);
                             cen.medida4 = TwoBytetoInt(MsgBinRec[40], MsgBinRec[41]);
                             cen.medida5 = TwoBytetoInt(MsgBinRec[42], MsgBinRec[43]);
-                        }
-                        else {
+                        } else {
                             cen.estComKron = false;
-                            MsgValor[0] = 0;
+                            Valor = 0.0;
                         }
-                    }
-                    else {
+                    } else {
                         cen.estComKron = false;
-                        MsgValor[0] = 0;
+                        Valor = 0.0;
                     }
-                }
-                catch(java.net.SocketTimeoutException e) {
+                } catch (java.net.SocketTimeoutException e) {
                     clientSocket.close();
                     cen.estComCncUno = false;
-                    MsgValor[0] = 0;
+                    Valor = 0.0;
                 }
             }
-            catch (IOException err) {
-                Terminal("Erro na Rotina EnvRecMsgSrv: " + err, false);
-                Valor = 70000.0;  // Código de retorno de erro na rotina
-            }
-        } // while
-        return(Valor);
+        }
+        catch(IOException err) {
+            Terminal("Erro na Rotina EnvRecMsgSrv: " + err, false);
+            Valor = 0.0;
+        }
+        return (Valor);
 
     } // Fim do Método
 

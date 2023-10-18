@@ -23,11 +23,8 @@ public class SupService {
     private static boolean publicador = false;
     private static int comando = 0;
     private static String idCliente;
-
-    private static String diretorioBd = "/home/bernardo/bd/";
     public static String diretorioRecursos = "recursos/";
 
-    //private static int numMaxUsuarios = 4;
     private static int numUsuarios = 4;
     private static final String[] nomeUsuario = {"usuario1", "usuario2", "usuario3", "usuario4"};
     private static final String[] senhaUsuario = {"senha1=1", "senha2=2", "senha3=3", "senha4=4"};
@@ -43,9 +40,6 @@ public class SupService {
     public static void setComando(int Comando) { comando = Comando; }
 
     public static String ValorIdCliente() { return idCliente; }
-    public static void setIdCliente(String IdCliente) { idCliente = IdCliente; }
-
-    public static String getDiretorioBd() { return diretorioBd; }
 
     public static String getDiretorioRecursos() { return diretorioRecursos; }
 
@@ -86,14 +80,12 @@ public class SupService {
                 verbose = true;
             }
             idCliente = LeParametro(arquivoConf, "IdCliente:");
-            diretorioBd = LeParametro(arquivoConf, "DiretorioBD:");
             diretorioRecursos = LeParametro(arquivoConf, "DiretorioRecursos:");
 
             publicador = false;
             if (LeParametro(arquivoConf, "Publicador:").equals("true")) {
                 publicador = true;
             }
-
             resultado = true;
         }
         return resultado;
@@ -120,7 +112,6 @@ public class SupService {
             System.out.println("Diretorio de recursos: " + diretorioRecursos);
             System.out.println("");
         }
-
     }
 
     //******************************************************************************************************************
@@ -159,7 +150,7 @@ public class SupService {
     // Saida: array com a sequência de bytes do arquivo lido. Se ocorrer falha na leitura, o método retorna null.      *
     //******************************************************************************************************************
     //
-    public static byte[] LeByte(String caminho, String nomeArquivo) {
+    public static byte[] LeArquivoByte(String caminho, String nomeArquivo) {
 
         try {
             File arquivo = new File(caminho + nomeArquivo);
@@ -282,7 +273,6 @@ public class SupService {
     //         No arquivo lido, deve haver uma linha vazia entre um parágrafo e outro.                                 *
     //                                                                                                                 *
     // Entrada: string com o caminho do arquivo e string com o nome do arquivo                                         *
-    //                                                                                                                 *
     // Saida: array de string com os parágrafos do arquivo texto lido. Se ocorrer falha na leitura, retorna null       *
     //******************************************************************************************************************
     //
@@ -318,7 +308,6 @@ public class SupService {
     // Funcao: procura um token em um arquivo texto e retorna o parâmetro que está após o token                        *
     //                                                                                                                 *
     // Entrada: string com o arquivo texto e string com o token                                                        *
-    //                                                                                                                 *
     // Saida: string com o parâmetro lido após o token                                                                 *
     //******************************************************************************************************************
     //
@@ -341,7 +330,6 @@ public class SupService {
     // Funcao: procura um token em um arquivo texto e retorna o campo que está após o token até o próximo CR/LF        *
     //                                                                                                                 *
     // Entrada: string com o arquivo texto e string com o token                                                        *
-    //                                                                                                                 *
     // Saida: string com o parâmetro lido após o token                                                                 *
     //******************************************************************************************************************
     //
@@ -371,7 +359,6 @@ public class SupService {
     // Funcao: procura um token em um arquivo texto e retorna o campo que está após o token entre os caracteres < e >  *
     //                                                                                                                 *
     // Entrada: string com o arquivo texto e string com o token                                                        *
-    //                                                                                                                 *
     // Saida: string com o campo lido após o token                                                                     *
     //******************************************************************************************************************
     //
@@ -383,7 +370,6 @@ public class SupService {
             int indiceAposToken = indiceToken + token.length();
             for (int i = indiceAposToken; i < fimArquivo; i++) {
                 if (arquivo.charAt(i) == '<') {
-                    //System.out.println("i = " + i);
                     for (int k = i + 1; k < fimArquivo; k++) {
                         if (arquivo.charAt(k) == '>') {
                             //System.out.println("k = " + k);
@@ -425,16 +411,14 @@ public class SupService {
         return ("<p></p><h3>File not found: " + nomeArquivo + "</h3>");
     }
 
-    //*****************************************************************************************************************
-    // Nome do Método: LeDataHora                                                                                     *
-    //                                                                                                                *
-    // Funcao: le a data e hora do relogio do computador                                                              *
-    //                                                                                                                *
-    // Entrada: não tem                                                                                               *
-    //                                                                                                                *
-    // Saida: array com 6 Bytes: [0] = Hora, [1] = Minuto, [2] = Segundo, [3] = Dia, [4] = Mês, [5] = Ano             *                                                                                 *
-    //                                                                                                                *
-    //*****************************************************************************************************************
+    //******************************************************************************************************************
+    // Nome do Método: LeDataHora                                                                                      *
+    //                                                                                                                 *
+    // Funcao: le a data e hora do relogio do computador                                                               *
+    //                                                                                                                 *
+    // Entrada: não tem                                                                                                *
+    // Saida: array com 6 Bytes: [0] = Hora, [1] = Minuto, [2] = Segundo, [3] = Dia, [4] = Mês, [5] = Ano              *                                                                                 *
+    //******************************************************************************************************************
     //
     public static byte[] LeDataHora() {
 
@@ -465,16 +449,14 @@ public class SupService {
         return(DH);
     }
 
-    //*****************************************************************************************************************
-    // Nome do Método: LeDataHoraNTP                                                                                  *
-    //                                                                                                                *
-    // Funcao: le a data e hora do relogio de um servidor NTP                                                         *
-    //                                                                                                                *
-    // Entrada: não tem                                                                                               *
-    //                                                                                                                *
-    // Saida: array com 6 Bytes: [0] = Hora, [1] = Minuto, [2] = Segundo, [3] = Dia, [4] = Mês, [5] = Ano             *                                                                                 *
-    //                                                                                                                *
-    //*****************************************************************************************************************
+    //******************************************************************************************************************
+    // Nome do Método: LeDataHoraNTP                                                                                   *
+    //                                                                                                                 *
+    // Funcao: le a data e hora do relogio de um servidor NTP                                                          *
+    //                                                                                                                 *
+    // Entrada: não tem                                                                                                *
+    // Saida: array com 6 Bytes: [0] = Hora, [1] = Minuto, [2] = Segundo, [3] = Dia, [4] = Mês, [5] = Ano              *                                                                                 *
+    //******************************************************************************************************************
     //
     static byte[] LeDataHoraNTP() {
 
@@ -511,13 +493,10 @@ public class SupService {
                 clientSocket.close();
             }
 
-        } catch (IOException err) {
-
-        }
+        } catch (IOException err) {        }
         byte DH [] = new byte[7];
         return(DH);
     }
-
 
     //*****************************************************************************************************************
     // Nome do Método: ImprimeHoraData                                                                                *
@@ -527,7 +506,6 @@ public class SupService {
     // Entrada: Array[6] [0] = Hora, [1] = Minutos, [2] = Segundos, [3] = Dia, [4] = Mês, [5] = Ano, [6] = Ano        *
     //                                                                                                                *
     // Saida: string no formato HH:MM:SS - DD/MM/AAAA                                                                 *                                                                                 *
-    //                                                                                                                *
     //*****************************************************************************************************************
     //
     static String ImprimeHoraData(byte [] DH, boolean Opcao) {
@@ -547,7 +525,6 @@ public class SupService {
             if (DH[4] < 10) { Msg = Msg + "0"; }
             Msg = Msg + DH[4] + "/" + DH[5] + DH[6];
         }
-
         return(Msg);
     }
 
@@ -566,7 +543,6 @@ public class SupService {
             System.out.println(ImprimeHoraData(LeDataHora(), false) + " - " + Msg);
         }
     }
-
 
     //******************************************************************************************************************
     // Nome do Método: IdComando                                                                                       *
