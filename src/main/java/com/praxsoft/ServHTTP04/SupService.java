@@ -142,7 +142,7 @@ public class SupService {
     }
 
     //******************************************************************************************************************
-    // Nome do Método: LeByte                                                                                          *
+    // Nome do Método: LeArquivoByte                                                                                   *
     //	                                                                                                               *
     // Funcao: lê um arquivo binário (sequência de bytes).                                                             *
     //                                                                                                                 *

@@ -173,7 +173,7 @@ public class XML {
         MsgXMLArray[IdNv0][IdNv1][i][0] = "ESTVRD";		MsgXMLArray[IdNv0][IdNv1][i++][1] = utr.estRede;
         MsgXMLArray[IdNv0][IdNv1][i][0] = "TBAT";		MsgXMLArray[IdNv0][IdNv1][i++][1] = utr.tBat + "";
 
-        IdNv1 = 2; // Grupo de 07 Variáveis de Informação da Bomba do Poço e da Caixa Azul
+        IdNv1 = 2; // Grupo de 08 Variáveis de Informação da Bomba do Poço e da Caixa Azul
         MsgXMLArray[IdNv0][IdNv1][0][0] = "AGUA";		MsgXMLArray[IdNv0][IdNv1][0][1] = "08";
 
         MsgXMLArray[IdNv0][IdNv1][1][0] = "ESTCXAZ";	MsgXMLArray[IdNv0][IdNv1][1][1] = utr.estCxAzul;
@@ -207,7 +207,7 @@ public class XML {
         MsgXMLArray[IdNv0][IdNv1][17][0] = "ICIRCC";	MsgXMLArray[IdNv0][IdNv1][17][1] = utr.iCirCc + "";
         MsgXMLArray[IdNv0][IdNv1][18][0] = "WCIRCC";	MsgXMLArray[IdNv0][IdNv1][18][1] = utr.wCirCC + "";
 
-        IdNv1 = 4; // Grupo de 20 Variáveis de Informação dos Inversores 1 e 2
+        IdNv1 = 4; // Grupo de 16 Variáveis de Informação dos Inversores 1 e 2
         MsgXMLArray[IdNv0][IdNv1][0][0] = "INV";		MsgXMLArray[IdNv0][IdNv1][0][1] = "16";
 
         MsgXMLArray[IdNv0][IdNv1][1][0] = "ESTIV2";		MsgXMLArray[IdNv0][IdNv1][1][1] = utr.estInv2;
@@ -238,7 +238,7 @@ public class XML {
         MsgXMLArray[IdNv0][IdNv1][5][0] = "TEMPPS";		MsgXMLArray[IdNv0][IdNv1][5][1] = caq.tempPlacaSolar + "";
         MsgXMLArray[IdNv0][IdNv1][6][0] = "TMPBL";		MsgXMLArray[IdNv0][IdNv1][6][1] = FormAnaHora(caq.tempoBombaAqLigada);
 
-        IdNv1 = 6; // Grupo de 6 Variáveis de Medidas do Multimedidor Kron
+        IdNv1 = 6; // Grupo de 11 Variáveis de Medidas do Multimedidor Kron
         MsgXMLArray[IdNv0][IdNv1][0][0] = "KRON";		MsgXMLArray[IdNv0][IdNv1][0][1] = "11";
 
         MsgXMLArray[IdNv0][IdNv1][1][0] = "ESTCCA";		MsgXMLArray[IdNv0][IdNv1][1][1] = ImpEstCom(cen.estComCncUno);

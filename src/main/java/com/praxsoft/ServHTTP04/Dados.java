@@ -13,7 +13,6 @@ public class Dados {
     private static CAQ caq = new CAQ();
     private static CEN cen = new CEN();
 
-    // Estados de Comunicação
     private static int ContMsgCoAP;
     private static int numComando = 0;
     private static String MsgComando = "";
@@ -23,7 +22,7 @@ public class Dados {
         if (ContMsgCoAP >= 256) {
             ContMsgCoAP = 0;
         }
-                return ContMsgCoAP;
+        return ContMsgCoAP;
     }
 
     public static int valorNumComando() {
@@ -47,7 +46,7 @@ public class Dados {
     }
 
     //******************************************************************************************************************
-    // Autor: Antonio Bernardo de Vasconcellos Praxedes  /  Data: 01/09/2023                                           *
+    // Autor: Antonio Bernardo de Vasconcellos Praxedes                                                                *
     //	                                                                                                               *
     // Nome do Método: MontaJsonUTR                                                                                    *
     //	                                                                                                               *
@@ -61,7 +60,6 @@ public class Dados {
     public static String MontaJsonUTR(String cmdEx) {
 
         if (!utr.estComConcMega || !utr.estComUtr) {
-
             utr.cmdEx = cmdEx;
             utr.hora = 0;
             utr.minuto = 0;
@@ -113,9 +111,7 @@ public class Dados {
             utr.estDjBoia = "-----";
             utr.estDjBomba = "-----";
             utr.tmpBombaLig = 0;
-
         }
-
         Gson gson = new Gson();
         String MsgJson = gson.toJson(utr);
         return(MsgJson);
@@ -225,62 +221,48 @@ public class Dados {
             byte[] MsgReqCoAP = new byte[32];
 
             int TamURI = URI.length();
-            byte DH[] = new byte[6];
-            DH = LeDataHora();
+            byte[] DH = LeDataHora();
 
-            MsgReqCoAP[0] = 0x40;                       // Versão = 01 / Tipo = 00 / Token = 0000
-            MsgReqCoAP[1] = 0x01;                       // Código de Solicitação: 0.01 GET
-            ContMsgCoAP = ContMsgCoAP + 1;              // Incrementa o Identificador de mensagens
-            MsgReqCoAP[2] = ByteHigh(ContMsgCoAP); // Byte Mais Significativo do Identificador da Mensagem
-            MsgReqCoAP[3] = ByteLow(ContMsgCoAP);  // Byte Menos Significativo do Identificador da Mensagem
-            MsgReqCoAP[4] = (byte) (0xB0 + TamURI);     // Delta: 11 - Primeira Opcao 11: Uri-path e Núm. Bytes da URI
+            MsgReqCoAP[0] = 0x40;                    // Versão = 01 / Tipo = 00 / Token = 0000
+            MsgReqCoAP[1] = 0x01;                    // Código de Solicitação: 0.01 GET
+            ContMsgCoAP = ContMsgCoAP + 1;           // Incrementa o Identificador de mensagens
+            MsgReqCoAP[2] = ByteHigh(ContMsgCoAP);   // Byte Mais Significativo do Identificador da Mensagem
+            MsgReqCoAP[3] = ByteLow(ContMsgCoAP);    // Byte Menos Significativo do Identificador da Mensagem
+            MsgReqCoAP[4] = (byte) (0xB0 + TamURI);  // Delta: 11 - Primeira Opcao 11: Uri-path e Núm. Bytes da URI
             int j = 5;
-            for (int i = 0; i < TamURI; i++) {          // Carrega os codigos ASCII da URI
+            for (int i = 0; i < TamURI; i++) {       // Carrega os codigos ASCII da URI
                 char Char = URI.charAt(i);
-                int ASCII = (int) Char;
+                int ASCII = Char;
                 MsgReqCoAP[i + 5] = (byte) ASCII;
                 j = j + 1;
             }
-            MsgReqCoAP[j] = (byte) 0x11;    // Delta: 1 - Segunda Opcao (11 + 1 = 12): Content-format e Núm. Bytes (1)
-            j = j + 1;
-            MsgReqCoAP[j] = 42;             // Codigo da Opcao Content-format: application/octet-stream
-            j = j + 1;
-            MsgReqCoAP[j] = -1;             // Identificador de Inicio do Payload (255)
-            j = j + 1;
-            MsgReqCoAP[j] = (byte)Comando;  // Carrega o Código do Comando no Payload
-            j = j + 1;
-            MsgReqCoAP[j] = DH[0];          // Carrega a Hora do Computador no Payload
-            j = j + 1;
-            MsgReqCoAP[j] = DH[1];          // Carrega a Minuto do Computador no Payload
-            j = j + 1;
-            MsgReqCoAP[j] = DH[2];          // Carrega a Segundo do Computador no Payload
-            j = j + 1;
-            MsgReqCoAP[j] = DH[3];          // Carrega a Dia do Computador no Payload
-            j = j + 1;
-            MsgReqCoAP[j] = DH[4];          // Carrega a Mes do Computador no Payload
-            j = j + 1;
-            MsgReqCoAP[j] = DH[5];          // Carrega a Ano do Computador no Payload
-            j = j + 1;
-            int TamCab = j;                 // Carrega o número de bytes do cabeçalho
+            MsgReqCoAP[j++] = (byte) 0x11;    // Delta: 1 - Segunda Opcao (11 + 1 = 12): Content-format e Núm. Bytes (1)
+            MsgReqCoAP[j++] = 42;             // Codigo da Opcao Content-format: application/octet-stream
+            MsgReqCoAP[j++] = -1;             // Identificador de Inicio do Payload (255)
+            MsgReqCoAP[j++] = (byte)Comando;  // Carrega o Código do Comando no Payload
+            MsgReqCoAP[j++] = DH[0];          // Carrega a Hora do Computador no Payload
+            MsgReqCoAP[j++] = DH[1];          // Carrega a Minuto do Computador no Payload
+            MsgReqCoAP[j++] = DH[2];          // Carrega a Segundo do Computador no Payload
+            MsgReqCoAP[j++] = DH[3];          // Carrega a Dia do Computador no Payload
+            MsgReqCoAP[j++] = DH[4];          // Carrega a Mes do Computador no Payload
+            MsgReqCoAP[j++] = DH[5];          // Carrega a Ano do Computador no Payload
+            int TamCab = j;                   // Carrega o número de bytes do cabeçalho
 
             DatagramSocket clientSocket = new DatagramSocket();
             InetAddress IPAddress = InetAddress.getByName(EndIP);
             clientSocket.setSoTimeout(5000);
             DatagramPacket sendPacket = new DatagramPacket(MsgReqCoAP, TamCab, IPAddress, Porta);
             DatagramPacket receivePacket = new DatagramPacket(MsgRecCoAP, TamMsgRspCoAP);
-
             clientSocket.send(sendPacket);
             Terminal("Enviada Requisicao CoAP para o Controlador", false);
 
             // Espera a Mensagem CoAP de Resposta do Concentrador Arduino Mega
             try {
-
                 clientSocket.receive(receivePacket);
                 utr.estComConcMega = true;
                 CarregaVarConcArdMega(MsgRecCoAP);
                 Terminal("Recebida Mensagem CoAP do Controlador", false);
                 clientSocket.close();
-
             } catch (java.net.SocketTimeoutException e) {
                 clientSocket.close();
                 utr.estComConcMega = false;
@@ -318,17 +300,18 @@ public class Dados {
             cc2.estComCc = receiveData1[29] > 0;
 
             if (utr.estComUtr) {
+
                 boolean EstRede = receiveData1[42] > 0;
-                boolean MdOp = receiveData1[43] > 0;
-                boolean MdCom = receiveData1[44] > 0;
-                boolean MdCtrl1 = receiveData1[55] > 0;
-                boolean MdCtrl = receiveData1[45] > 0;
                 boolean HabCarga1 = receiveData1[46] > 0;
                 boolean HabCarga2 = receiveData1[47] > 0;
                 boolean HabCarga3 = receiveData1[48] > 0;
                 boolean HabCarga4 = receiveData1[49] > 0;
                 boolean EstadoCarga3 = receiveData1[53] > 0;
                 boolean FontesCCLigadas = receiveData1[73] > 0;
+                boolean EstadoInversor1 = receiveData1[51] > 0;
+                boolean DJEINV1 = receiveData1[37] > 0;
+                boolean EstadoInversor2 = receiveData1[52] > 0;
+                boolean BoiaCxAzul = receiveData1[39] > 0;
 
                 // Le o estado das saidas digitais
                 int NumSd = 32;
@@ -339,42 +322,36 @@ public class Dados {
                     k = k + 1;
                 }
 
+                if (receiveData1[43] > 0) { utr.modoOp = "Normal"; } else { utr.modoOp = "Economia"; }
+                if (receiveData1[44] > 0) { utr.modoCom = "Remoto"; } else { utr.modoCom = "Local"; }
+                if (receiveData1[55] > 0) { utr.modoCtrl1 = "Automatico"; } else { utr.modoCtrl1 = "Manual"; }
+                if (receiveData1[45] > 0) { utr.modoCtrl = "Hab"; } else { utr.modoCtrl = "     "; }
+                if (receiveData1[38] > 0) { utr.estDjBoia = "Ligado"; } else { utr.estDjBoia = "Desligado"; }
+                if (receiveData1[40] > 0) { utr.estBomba = "Ligada"; } else { utr.estBomba = "Desligada"; }
+
                 // Carrega as variaveis com os valores das saidas digitais da UTR1
                 boolean Iv1Lig = SD[10] > 0; // Iv2Lig = SD[10] > 0;
-                boolean Iv2Lig = SD[1] > 0; // Iv1Lig = SD[1] > 0;
-                boolean EnergiaCarga1 = SD[17] > 0;
-                boolean EnergiaCarga2 = SD[0] > 0;
-                boolean EnergiaCarga3 = SD[2] > 0;
+                boolean Iv2Lig = SD[1] > 0;  // Iv1Lig = SD[1] > 0;
+                if (Iv2Lig) { utr.estInv2 = "Ligado"; } else { utr.estInv2 = "Desligado"; }
+                if (Iv1Lig) { utr.estInv1 = "Ligado"; } else { utr.estInv1 = "Desligado"; }
 
-                // Estados dos Inversores 1 e 2
-                boolean EstadoInversor1 = receiveData1[51] > 0;
-                boolean DJEINV1 = receiveData1[37] > 0;
-                boolean EstadoInversor2 = receiveData1[52] > 0;
-
-                // Estados da Caixa Azul
-                boolean CircBoia = receiveData1[38] > 0;
-                boolean BoiaCxAzul = receiveData1[39] > 0;
-                boolean CircBomba = receiveData1[40] > 0;
-                boolean AlRedeBomba = receiveData1[41] > 0;
-                int EstadoCxAz = receiveData1[72];
-
-                if (EstRede) { if (utr.vRede > 190.0) { utr.estRede = "Normal"; } else { utr.estRede = "Baixa"; } }
-                else { utr.estRede = "Falta CA"; }
-
-                if (MdOp) { utr.modoOp = "Normal"; } else { utr.modoOp = "Economia"; }
-                if (MdCom) { utr.modoCom = "Remoto"; } else { utr.modoCom = "Local"; }
-                if (MdCtrl1) { utr.modoCtrl1 = "Automatico"; } else { utr.modoCtrl1 = "Manual"; }
-                if (MdCtrl) { utr.modoCtrl = "Hab"; } else { utr.modoCtrl = "     "; }
-
-                if (EnergiaCarga1) { utr.energiaCg1 = "Inversor 1"; }
+                if (SD[17] > 0) { utr.energiaCg1 = "Inversor 1"; }
                 else { if (HabCarga1) { utr.energiaCg1 = "Rede (Inv)"; } else { utr.energiaCg1 = "Rede"; } }
 
-                if (EnergiaCarga2) { utr.energiaCg2 = "Inversor 1"; }
+                if (SD[0] > 0) { utr.energiaCg2 = "Inversor 1"; }
                 else { if (HabCarga2) { utr.energiaCg2 = "Rede (Inv)"; } else { utr.energiaCg2 = "Rede"; } }
 
-                if (EnergiaCarga3) { utr.energiaCg3 = "Inversor 1"; }
+                if (SD[2] > 0) { utr.energiaCg3 = "Inversor 1"; }
                 else { utr.energiaCg3 = "Rede"; }
 
+                if (EstRede) {
+                    if (receiveData1[41] > 0) { utr.estDjBomba = "Ligado"; } else { utr.estDjBomba = "Desligado"; }
+                }
+                else {
+                    utr.estDjBomba = "Falta CA";
+                }
+
+                int EstadoCxAz = receiveData1[72];
                 utr.estCxAzul = "";
                 utr.nivCxAzul = "";
                 switch (EstadoCxAz) {
@@ -409,25 +386,17 @@ public class Dados {
                     break;
                 }
 
-                if (CircBoia) { utr.estDjBoia = "Ligado"; } else { utr.estDjBoia = "Desligado"; }
-
-                if (EstRede) { if (AlRedeBomba) { utr.estDjBomba = "Ligado"; } else { utr.estDjBomba = "Desligado"; } }
-                else { utr.estDjBomba = "Falta CA"; }
-
                 // Energia Bomba de Água do Poço
                 utr.energiaCg4 = "Rede";
                 if (Iv2Lig) { utr.energiaCg4 = "Inversor 2"; }
                 else { if (HabCarga4) { utr.energiaCg4 = "Rede (Hab)"; } }
 
-                if (CircBomba) { utr.estBomba = "Ligada"; } else { utr.estBomba = "Desligada"; }
-
                 if (EstRede) {
                     if (FontesCCLigadas) { utr.estFontesCC = "Ligadas"; } else { utr.estFontesCC = "Desligadas"; }
                 }
-                else { utr.estFontesCC = "Falta CA"; }
-
-                if (Iv2Lig) { utr.estInv2 = "Ligado"; } else { utr.estInv2 = "Desligado"; }
-                if (Iv1Lig) { utr.estInv1 = "Ligado"; } else { utr.estInv1 = "Desligado"; }
+                else {
+                    utr.estFontesCC = "Falta CA";
+                }
 
                 // Le as Medidas de 2 bytes da mensagem recebida
                 int NumMed = 48;
@@ -472,7 +441,10 @@ public class Dados {
                 cc2.wSCc = Med[31] / 100.0;     // 0x3106 - Battery charging power 2 (Med[45])
                 cc2.tbat = Med[32] / 100.0;     // 0x3110 - Battery Temperature 1
 
-                utr.wCirCC = Med[35] / 100.0;     // Potencia Consumida pelos Circuitos de 24Vcc
+                utr.wCirCC = Med[35] / 100.0;   // Potencia Consumida pelos Circuitos de 24Vcc
+
+                if (EstRede) { if (utr.vRede > 190.0) { utr.estRede = "Normal"; } else { utr.estRede = "Baixa"; } }
+                else { utr.estRede = "Falta CA"; }
 
                 if (!Iv1Lig) {         // Se o Inversor 1 estiver desligado,
                     utr.iEInv1 = 0;    // zera a corrente de entrada
@@ -552,25 +524,20 @@ public class Dados {
             InetAddress IPAddress = InetAddress.getByName(EndIP);
             clientSocket.setSoTimeout(2000);
             DatagramPacket sendPacket = new DatagramPacket(MsgReq, TamCab, IPAddress, Porta);
-
             clientSocket.send(sendPacket);
-            String MsgTerm = "Enviada Requisicao Binaria para o Controlador de Água Quente";
-            Terminal(MsgTerm, false);
+            Terminal("Enviada Requisicao Binaria para o Controlador de Água Quente", false);
 
             // Espera a Mensagem Binária de Resposta. Se a mensagem de resposta  for recebida, carrega nas variáveis
             try {
                 DatagramPacket receivePacket = new DatagramPacket(MsgBinRec, TamMsgRsp);
                 clientSocket.receive(receivePacket);
-
                 caq.estComAq = true;
                 Terminal("Recebida Mensagem Binaria do Controlador de Água Quente", false);
 
-                boolean EstBombaAQ = BytetoInt(MsgBinRec[73]) > 0;
-                boolean EstAquecedor = BytetoInt(MsgBinRec[72]) > 0;
-
-                if (EstBombaAQ) { caq.estBombaAguaQuente = "Ligada"; }
+                if (MsgBinRec[73] > 0) { caq.estBombaAguaQuente = "Ligada"; }
                 else { caq.estBombaAguaQuente = "Desligada"; }
-                if (EstAquecedor) { caq.estAquecedor = "Ligado"; }
+
+                if (MsgBinRec[72] > 0) { caq.estAquecedor = "Ligado"; }
                 else { caq.estAquecedor = "Desligado"; }
 
                 caq.tempBoiler = TwoBytetoInt(MsgBinRec[48], MsgBinRec[49]) / 100.0;
@@ -657,23 +624,23 @@ public class Dados {
         cen.estComKron = false;
 
         try {
-            MsgReq[8] = 1;              // Endereço do Multimedidor
-            MsgReq[9] = (byte) funcao;  // Função MODBUS
+            MsgReq[8] = 1;               // Endereço do Multimedidor
+            MsgReq[9] = (byte) funcao;   // Função MODBUS
 
             if (funcao == 16) {
                 EndReg = 2;
             }
 
-            MsgReq[10] = 0;                // Campo 1: Função 4 = Registro Inicial (MSB)
-            MsgReq[11] = (byte) EndReg;    // Campo 2: Função 4 = Registro Inicial (LSB)
-            MsgReq[12] = 0;                // Campo 3: Função 4 = Número de Registros (MSB)
-            MsgReq[13] = 2;                // Campo 4: Função 4 = Número de Registros (LSB)
+            MsgReq[10] = 0;              // Campo 1: Função 4 = Registro Inicial (MSB)
+            MsgReq[11] = (byte) EndReg;  // Campo 2: Função 4 = Registro Inicial (LSB)
+            MsgReq[12] = 0;              // Campo 3: Função 4 = Número de Registros (MSB)
+            MsgReq[13] = 2;              // Campo 4: Função 4 = Número de Registros (LSB)
 
-            MsgReq[14] = 4;                // Campo 5 = Número de Bytes ( 4 )
-            MsgReq[15] = 0;            // Campo 6 ( F2 )  - Valor a programar (RTC)
+            MsgReq[14] = 4;              // Campo 5 = Número de Bytes ( 4 )
+            MsgReq[15] = 0;              // Campo 6 ( F2 )  - Valor a programar (RTC)
             MsgReq[16] = 0;              // Campo 7 ( F1 )  - Valor a programar (RTC)
             MsgReq[17] = 32;             // Campo 8 ( F0 )  - Valor a programar (RTC)
-            MsgReq[18] = 65;                // Campo 9 ( EXP ) - Valor a programar (RTC)
+            MsgReq[18] = 65;             // Campo 9 ( EXP ) - Valor a programar (RTC)
 
             DatagramSocket clientSocket = new DatagramSocket();
             InetAddress IPAddress = InetAddress.getByName(EndIP);
