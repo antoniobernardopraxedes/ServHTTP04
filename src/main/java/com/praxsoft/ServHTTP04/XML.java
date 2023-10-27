@@ -210,23 +210,23 @@ public class XML {
         IdNv1 = 4; // Grupo de 16 Variáveis de Informação dos Inversores 1 e 2
         MsgXMLArray[IdNv0][IdNv1][0][0] = "INV";		MsgXMLArray[IdNv0][IdNv1][0][1] = "16";
 
-        MsgXMLArray[IdNv0][IdNv1][1][0] = "ESTIV2";		MsgXMLArray[IdNv0][IdNv1][1][1] = utr.estInv2;
-        MsgXMLArray[IdNv0][IdNv1][2][0] = "IEIV2";		MsgXMLArray[IdNv0][IdNv1][2][1] = utr.iEInv2 + "";
-        MsgXMLArray[IdNv0][IdNv1][3][0] = "WEIV2";		MsgXMLArray[IdNv0][IdNv1][3][1] = utr.wEInv2 + "";
-        MsgXMLArray[IdNv0][IdNv1][4][0] = "VSIV2";		MsgXMLArray[IdNv0][IdNv1][4][1] = utr.vSInv2 + "";
-        MsgXMLArray[IdNv0][IdNv1][5][0] = "ISIV2";		MsgXMLArray[IdNv0][IdNv1][5][1] = utr.iSInv2 + "";
-        MsgXMLArray[IdNv0][IdNv1][6][0] = "WSIV2";		MsgXMLArray[IdNv0][IdNv1][6][1] = utr.wSInv2 + "";
-        MsgXMLArray[IdNv0][IdNv1][7][0] = "TDIV2";		MsgXMLArray[IdNv0][IdNv1][7][1] = utr.tDInv2 + "";
-        MsgXMLArray[IdNv0][IdNv1][8][0] = "TTIV2";		MsgXMLArray[IdNv0][IdNv1][8][1] = utr.tTInv2 + "";
+        MsgXMLArray[IdNv0][IdNv1][1][0] = "ESTIV2";		MsgXMLArray[IdNv0][IdNv1][1][1] = utr.estInvD;
+        MsgXMLArray[IdNv0][IdNv1][2][0] = "IEIV2";		MsgXMLArray[IdNv0][IdNv1][2][1] = utr.iEInvD + "";
+        MsgXMLArray[IdNv0][IdNv1][3][0] = "WEIV2";		MsgXMLArray[IdNv0][IdNv1][3][1] = utr.wEInvD + "";
+        MsgXMLArray[IdNv0][IdNv1][4][0] = "VSIV2";		MsgXMLArray[IdNv0][IdNv1][4][1] = utr.vSInvD + "";
+        MsgXMLArray[IdNv0][IdNv1][5][0] = "ISIV2";		MsgXMLArray[IdNv0][IdNv1][5][1] = utr.iSInvD + "";
+        MsgXMLArray[IdNv0][IdNv1][6][0] = "WSIV2";		MsgXMLArray[IdNv0][IdNv1][6][1] = utr.wSInvD + "";
+        MsgXMLArray[IdNv0][IdNv1][7][0] = "TDIV2";		MsgXMLArray[IdNv0][IdNv1][7][1] = utr.tDInvD + "";
+        MsgXMLArray[IdNv0][IdNv1][8][0] = "TTIV2";		MsgXMLArray[IdNv0][IdNv1][8][1] = utr.tTInvD + "";
 
-        MsgXMLArray[IdNv0][IdNv1][9][0] = "ESTIV1";		MsgXMLArray[IdNv0][IdNv1][9][1] = utr.estInv1;
-        MsgXMLArray[IdNv0][IdNv1][10][0] = "IEIV1";		MsgXMLArray[IdNv0][IdNv1][10][1] = utr.iEInv1 + "";
-        MsgXMLArray[IdNv0][IdNv1][11][0] = "WEIV1";		MsgXMLArray[IdNv0][IdNv1][11][1] = utr.wEInv1 + "";
-        MsgXMLArray[IdNv0][IdNv1][12][0] = "VSIV1";		MsgXMLArray[IdNv0][IdNv1][12][1] = utr.vSInv1 + "";
-        MsgXMLArray[IdNv0][IdNv1][13][0] = "ISIV1";		MsgXMLArray[IdNv0][IdNv1][13][1] = utr.iSInv1 + "";
-        MsgXMLArray[IdNv0][IdNv1][14][0] = "WSIV1";		MsgXMLArray[IdNv0][IdNv1][14][1] = utr.wSInv1 + "";
-        MsgXMLArray[IdNv0][IdNv1][15][0] = "TDIV1";		MsgXMLArray[IdNv0][IdNv1][15][1] = utr.tDInv1 + "";
-        MsgXMLArray[IdNv0][IdNv1][16][0] = "TTIV1";		MsgXMLArray[IdNv0][IdNv1][16][1] = utr.tTInv1 + "";
+        MsgXMLArray[IdNv0][IdNv1][9][0] = "ESTIV1";		MsgXMLArray[IdNv0][IdNv1][9][1] = utr.estInvE;
+        MsgXMLArray[IdNv0][IdNv1][10][0] = "IEIV1";		MsgXMLArray[IdNv0][IdNv1][10][1] = utr.iEInvE + "";
+        MsgXMLArray[IdNv0][IdNv1][11][0] = "WEIV1";		MsgXMLArray[IdNv0][IdNv1][11][1] = utr.wEInvE + "";
+        MsgXMLArray[IdNv0][IdNv1][12][0] = "VSIV1";		MsgXMLArray[IdNv0][IdNv1][12][1] = utr.vSInvE + "";
+        MsgXMLArray[IdNv0][IdNv1][13][0] = "ISIV1";		MsgXMLArray[IdNv0][IdNv1][13][1] = utr.iSInvE + "";
+        MsgXMLArray[IdNv0][IdNv1][14][0] = "WSIV1";		MsgXMLArray[IdNv0][IdNv1][14][1] = utr.wSInvE + "";
+        MsgXMLArray[IdNv0][IdNv1][15][0] = "TDIV1";		MsgXMLArray[IdNv0][IdNv1][15][1] = utr.tDInvE + "";
+        MsgXMLArray[IdNv0][IdNv1][16][0] = "TTIV1";		MsgXMLArray[IdNv0][IdNv1][16][1] = utr.tTInvE + "";
 
         IdNv1 = 5; // Grupo de 6 Variáveis de Informação da Água Quente
         MsgXMLArray[IdNv0][IdNv1][0][0] = "AGUAQ";		MsgXMLArray[IdNv0][IdNv1][0][1] = "06";

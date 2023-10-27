@@ -20,70 +20,70 @@
     <tr class="linha"><!-- Linha 02 -->
       <td colspan="2">Conexão Concentrador</td><td align="center" id="comcnc"></td>
       <td colspan="2">Corrente Entrada CC1</td><td align="center" id="is12" >-----</td>
-      <td colspan="2">Estado do Inversor 1</td><td align="center" id="estiv1">-----</td>
+      <td colspan="2">Estado do Inversor D</td><td align="center" id="estiv1">-----</td>
       <td> <button type="button" onclick="loadXMLDoc('cmd=0003')" class="botao">Operação Economia</button></td>
     </tr>
 
     <tr class="linha"><!-- Linha 03 -->
 	    <td colspan="2">Conexão UTR</td><td align="center" id="comutr">-----</td>
 	    <td colspan="2">Tensão Saida CC1</td><td align="center" id="vbat1">-----</td>
-	    <td colspan="2">Potência Entrada Inv1</td><td align="center" id="weiv1">-----</td>
+	    <td colspan="2">Potência Entrada Inv D</td><td align="center" id="weiv1">-----</td>
 	    <td><button type="button" onclick="loadXMLDoc('cmd=0002')" class="botao">Acerta Relógio</button></td>
 	  </tr>
 
 	  <tr class="linha"><!-- Linha 04 -->
 	    <td colspan="2">Conexão CC1</td><td align="center" id="comcc1">-----</td>
 	    <td colspan="2">Corrente Saida CC1</td><td align="center" id="iscc1">-----</td>
-	    <td colspan="2">Tensão Saida Inv1</td><td align="center" id="vsiv1">-----</td>
+	    <td colspan="2">Tensão Saida Inv D</td><td align="center" id="vsiv1">-----</td>
 	    <td><button type="button" onclick="loadXMLDoc('cmd=0015')" class="botao">Apaga Indicadores</button></td>
     </tr>
 
 	  <tr class="linha"><!-- Linha 05 -->
 	    <td colspan="2">Conexão CC2</td><td align="center" id="comcc2">-----</td>
 	    <td colspan="2">Potência Saida CC1</td><td align="center" id="wscc1">-----</td>
-	    <td colspan="2">Temp. Driver Inv1</td><td align="center" id="tdiv1">-----</td>
+	    <td colspan="2">Temp. Driver Inv D</td><td align="center" id="tdiv1">-----</td>
       <td><button type="button" onclick="loadXMLDoc('cmd=0007')" class="botao">Carga 1 para Inversor</button></td>
     </tr>
 
 	  <tr class="linha"><!-- Linha 06 -->
 	    <td colspan="3" id="cmdex"></td>
       <td colspan="2">Temp. Baterias CC1</td><td align="center" id="tbat1">-----</td>
-      <td colspan="2">Temp. Trafo Inv1</td><td align="center" id="ttiv1">-----</td>
+      <td colspan="2">Temp. Trafo Inv D</td><td align="center" id="ttiv1">-----</td>
 	    <td><button type="button" onclick="loadXMLDoc('cmd=0008')" class="botao">Carga 1 para Rede</button></td>
 	  </tr>
 
 	  <tr class="linha"><!-- Linha 07 -->
 	    <td colspan="2">Tensão Barramento</td><td align="center" id="vbat">-----</td>
 	    <td colspan="2">Tensão Entrada CC2</td><td align="center" id="vp34">-----</td>
-	    <td colspan="2">Estado do Inversor 2</td><td align="center" id="estiv2">-----</td>
+	    <td colspan="2">Estado do Inversor E</td><td align="center" id="estiv2">-----</td>
 	    <td><button type="button" onclick="loadXMLDoc('cmd=0009')" class="botao">Carga 2 para Inversor</button></td>
 	  </tr>
 
 	  <tr class="linha"><!-- Linha 08 -->
 	    <td>Tensão Rede</td><td align="center" id="estvrd">-----</td><td align="center" id="vrede">-----</td>
 	    <td colspan="2">Corrente Entrada CC2</td><td align="center" id="is34">-----</td>
-	    <td colspan="2">Potência Entrada Inv2</td><td align="center" id="weiv2">-----</td>
+	    <td colspan="2">Potência Entrada Inv E</td><td align="center" id="weiv2">-----</td>
 	    <td> <button type="button" onclick="loadXMLDoc('cmd=0010')" class="botao">Carga 2 para Rede</button></td>
 	  </tr>
 
 	  <tr class="linha"><!-- Linha 09 -->
 	    <td colspan="2">Modo de Operação</td><td align="center" id="mdop">-----</td>
 	    <td colspan="2">Tensão Saida CC2</td><td align="center" id="vbat2">-----</td>
-	    <td colspan="2">Tensão Saida Inv2</td><td align="center" id="vsiv2">-----</td>
+	    <td colspan="2">Tensão Saida Inv E</td><td align="center" id="vsiv2">-----</td>
 	    <td> <button type="button" onclick="loadXMLDoc('cmd=0011')" class="botao">Carga 3 para Inversor</button></td>
 	  </tr>
 
 	  <tr class="linha"><!-- Linha 10 -->
 	    <td colspan="2">Modo de Comando</td><td align="center" id="mdcom">-----</td>
 	    <td colspan="2">Corrente Saida CC2</td><td align="center" id="iscc2">-----</td>
-	    <td colspan="2">Temp. Driver Inv2</td><td align="center" id="tdiv2">-----</td>
+	    <td colspan="2">Temp. Driver Inv E</td><td align="center" id="tdiv2">-----</td>
       <td> <button type="button" onclick="loadXMLDoc('cmd=0012')" class="botao">Carga 3 para Rede</button></td>
 	  </tr>
 
 	  <tr class="linha"><!-- Linha 11 -->
 	    <td colspan="2">Energia Carga 1</td><td align="center" id="encg1">-----</td>
 	    <td colspan="2">Potência Saida CC2</td><td align="center" id="wscc2">-----</td>
-	    <td colspan="2">Temp. Trafo Inv2</td><td align="center" id="ttiv2">-----</td>
+	    <td colspan="2">Temp. Trafo Inv E</td><td align="center" id="ttiv2">-----</td>
 	    <td> <button type="button" onclick="loadXMLDoc('cmd=0006')" class="botao">Hab. Carga 3 falta CA</button></td>
     </tr>
 

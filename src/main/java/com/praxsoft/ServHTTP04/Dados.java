@@ -88,22 +88,22 @@ public class Dados {
             utr.wCirCC = 0;
             utr.estFontesCC = "-----";
 
-            utr.estInv2 = "-----";
-            utr.iEInv2 = 0;
-            utr.wEInv2 = 0;
-            utr.vSInv2 = 0;
-            utr.iSInv2 = 0;
-            utr.wSInv2 = 0;
-            utr.tDInv2 = 0;
-            utr.tTInv2 = 0;
-            utr.estInv1 = "-----";
-            utr.iEInv1 = 0;
-            utr.wEInv1 = 0;
-            utr.vSInv1 = 0;
-            utr.iSInv1 = 0;
-            utr.wSInv1 = 0;
-            utr.tDInv1 = 0;
-            utr.tTInv1 = 0;
+            utr.estInvD = "-----";
+            utr.iEInvD = 0;
+            utr.wEInvD = 0;
+            utr.vSInvD = 0;
+            utr.iSInvD = 0;
+            utr.wSInvD = 0;
+            utr.tDInvD = 0;
+            utr.tTInvD = 0;
+            utr.estInvE = "-----";
+            utr.iEInvE = 0;
+            utr.wEInvE = 0;
+            utr.vSInvE = 0;
+            utr.iSInvE = 0;
+            utr.wSInvE = 0;
+            utr.tDInvE = 0;
+            utr.tTInvE = 0;
 
             utr.estCxAzul = "-----";
             utr.nivCxAzul = "-----";
@@ -332,8 +332,8 @@ public class Dados {
                 // Carrega as variaveis com os valores das saidas digitais da UTR1
                 boolean Iv1Lig = SD[10] > 0; // Iv2Lig = SD[10] > 0;
                 boolean Iv2Lig = SD[1] > 0;  // Iv1Lig = SD[1] > 0;
-                if (Iv2Lig) { utr.estInv2 = "Ligado"; } else { utr.estInv2 = "Desligado"; }
-                if (Iv1Lig) { utr.estInv1 = "Ligado"; } else { utr.estInv1 = "Desligado"; }
+                if (Iv2Lig) { utr.estInvD = "Ligado"; } else { utr.estInvD = "Desligado"; }
+                if (Iv1Lig) { utr.estInvE = "Ligado"; } else { utr.estInvE = "Desligado"; }
 
                 if (SD[17] > 0) { utr.energiaCg1 = "Inversor 1"; }
                 else { if (HabCarga1) { utr.energiaCg1 = "Rede (Inv)"; } else { utr.energiaCg1 = "Rede"; } }
@@ -409,19 +409,19 @@ public class Dados {
 
                 // Carrega as medidas lidas do Concentrador Arduino Mega nas variaveis
                 utr.vBat = Med[0] / 100.0;         // Tensão do Banco de Baterias
-                utr.tDInv2 = Med[2] / 100.0;       // Temperatura do Driver do Inversor 2 (8)
+                utr.tDInvD = Med[2] / 100.0;       // Temperatura do Driver do Inversor 2 (8)
                 utr.iCirCc = Med[3] / 1000.0;      // Corrente Total dos Circuitos CC
-                utr.vSInv2 = Med[4] / 100.0;       // Tensão de Saída do Inversor 2 (Invertido)
-                utr.vSInv1 = Med[6] / 100.0;       // Tensão de Saída do Inversor 1 (Invertido)
+                utr.vSInvD = Med[4] / 100.0;       // Tensão de Saída do Inversor 2
+                utr.vSInvE = Med[6] / 100.0;       // Tensão de Saída do Inversor 1
                 utr.vRede = Med[5] / 100.0;        // Tensão da Rede
-                utr.tTInv2 = Med[7] / 100.0;       // Temperatura do Transformador do Inversor 2 (9)
-                utr.tDInv1 = Med[8] / 100.0;       // Temperatura do Driver do Inversor 1 (2)
-                utr.tTInv1 = Med[9] / 100.0;       // Temperatura do Transformador do Inversor 1 (7)
-                utr.iSInv1 = (Med[10] * 7) / 1000; // Corrente de Saída do Inversor 1 (13)
-                utr.iEInv1 = Med[12] / 100.0;      // Corrente de Entrada do Inversor 1 (15)
-                utr.iSInv2 = Med[13] / 1000.0;     // Corrente de Saída do Inversor 2 (10)
-                utr.iCg3 = Med[14] / 1000.0;       // Corrente Carga 3 (Geladeira)
-                utr.iEInv2 = Med[15] / 100.0;      // Corrente de Entrada do Inversor 2 (12)
+                utr.tTInvD = Med[7] / 100.0;       // Temperatura do Transformador do Inversor 2 (9)
+                utr.tDInvE = Med[8] / 100.0;       // Temperatura do Driver do Inversor 1 (2)
+                utr.tTInvE = Med[9] / 100.0;       // Temperatura do Transformador do Inversor 1 (7)
+                utr.iSInvE = (Med[10] * 7) / 1000; // Corrente de Saída do Inversor 1 (13)
+                utr.iEInvE = Med[12] / 100.0;      // Corrente de Entrada do Inversor 1 (15)
+                utr.iSInvD = Med[13] / 1000.0;     // Corrente de Saída do Inversor 2 (10)
+                utr.iCg3 = Med[14] / 1000.0;       // Corrente Carga 3
+                utr.iEInvD = Med[15] / 100.0;      // Corrente de Entrada do Inversor 2 (12)
                 utr.vmBat = Med[16] / 100.0;       // Tensão Média Estendida do Banco de Baterias
                 utr.tmpBombaLig = (int) Med[17];   // Tempo da Bomba Ligada
 
@@ -447,23 +447,23 @@ public class Dados {
                 else { utr.estRede = "Falta CA"; }
 
                 if (!Iv1Lig) {         // Se o Inversor 1 estiver desligado,
-                    utr.iEInv1 = 0;    // zera a corrente de entrada
-                    utr.vSInv1 = 0;    // zera a tensão de saída
-                    utr.iSInv1 = 0;    // zera a corrente de saída
+                    utr.iEInvE = 0;    // zera a corrente de entrada
+                    utr.vSInvE = 0;    // zera a tensão de saída
+                    utr.iSInvE = 0;    // zera a corrente de saída
                 }
                 if (!Iv2Lig) {         // Se o Inversor 2 estiver desligado, zera a tensão de saída
-                    utr.iEInv2 = 0;    // zera a corrente de entrada
-                    utr.vSInv2 = 0;    // zera a tensão de saída
-                    utr.iSInv2 = 0;    // zera a corrente de saída
+                    utr.iEInvD = 0;    // zera a corrente de entrada
+                    utr.vSInvD = 0;    // zera a tensão de saída
+                    utr.iSInvD = 0;    // zera a corrente de saída
                 }
 
                 // Variáveis Calculadas utr.iTotCg24v = FormataDouble2CD(ITotCg);
-                utr.iTotCg24v = FormataDouble2CD(utr.iEInv1 + utr.iEInv2 + utr.iCirCc);  // Corrente Total Consumida pelas Cargas
-                utr.wTotCg24v = FormataDouble2CD(utr.wEInv1 + utr.wEInv2 + utr.wCirCC);  // Potência Total Consumida pelas Cargas
-                utr.wEInv2 = FormataDouble2CD(utr.vBat * utr.iEInv2);    // Potencia de Entrada do Inversor 2 (Med[38])
-                utr.wSInv2 = FormataDouble2CD(utr.vSInv2 * utr.iSInv2);  // Potencia de Saida do Inversor 2 (Med[39])
-                utr.wEInv1 = FormataDouble2CD(utr.vBat * utr.iEInv1);    // Potência de Entrada do Inversor 1 (Med[41])
-                utr.wSInv1 = FormataDouble2CD(utr.vSInv1 * utr.iSInv1);  // Potencia de Saida do Inversor 1 (Med[42])
+                utr.wEInvD = FormataDouble2CD(utr.vBat * utr.iEInvD);    // Potencia de Entrada do Inversor 2 (Med[38])
+                utr.wSInvD = FormataDouble2CD(utr.vSInvD * utr.iSInvD);  // Potencia de Saida do Inversor 2 (Med[39])
+                utr.wEInvE = FormataDouble2CD(utr.vBat * utr.iEInvE);    // Potência de Entrada do Inversor 1 (Med[41])
+                utr.wSInvE = FormataDouble2CD(utr.vSInvE * utr.iSInvE);  // Potencia de Saida do Inversor 1 (Med[42])
+                utr.iTotCg24v = FormataDouble2CD(utr.iEInvE + utr.iEInvD + utr.iCirCc);  // Corrente Total Consumida pelas Cargas
+                utr.wTotCg24v = FormataDouble2CD(utr.wEInvE + utr.wEInvD + utr.wCirCC);  // Potência Total Consumida pelas Cargas
             }
         }
 

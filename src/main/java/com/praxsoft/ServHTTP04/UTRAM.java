@@ -37,22 +37,22 @@ public class UTRAM {
     public String estFontesCC;
 
     // EStados e Medidas dos Inversores 1 e 2
-    public String estInv2;
-    public double iEInv2;
-    public double wEInv2;
-    public double vSInv2;
-    public double iSInv2;
-    public double wSInv2;
-    public double tDInv2;
-    public double tTInv2;
-    public String estInv1;
-    public double iEInv1;
-    public double wEInv1;
-    public double vSInv1;
-    public double iSInv1;
-    public double wSInv1;
-    public double tDInv1;
-    public double tTInv1;
+    public String estInvD;
+    public double iEInvD;
+    public double wEInvD;
+    public double vSInvD;
+    public double iSInvD;
+    public double wSInvD;
+    public double tDInvD;
+    public double tTInvD;
+    public String estInvE;
+    public double iEInvE;
+    public double wEInvE;
+    public double vSInvE;
+    public double iSInvE;
+    public double wSInvE;
+    public double tDInvE;
+    public double tTInvE;
 
     // Estados e Medidas da Caixa d'Água e da Bonba do Poço
     public String estCxAzul;
