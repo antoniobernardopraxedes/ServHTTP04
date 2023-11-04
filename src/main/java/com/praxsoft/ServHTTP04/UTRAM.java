@@ -34,6 +34,7 @@ public class UTRAM {
     public double wTotCg24v;
     public double iCirCc;
     public double wCirCC;
+    public double wTotGerCC;
     public String estFontesCC;
 
     // EStados e Medidas dos Inversores 1 e 2

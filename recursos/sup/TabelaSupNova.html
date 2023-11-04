@@ -96,68 +96,75 @@
 
 	  <tr class="linha"><!-- Linha 13 -->
 	    <td>Energia Carga 3</td><td align="center" id="mdct3">-----</td><td align="center" id="encg3">-----</td>
-	    <td colspan="2">Corrente Total Cg 24Vcc</td><td align="center" id="itotcg">-----</td>
+	    <td colspan="2">Potência Total CC1 CC2</td><td align="center" id="wtotgrcc">-----</td>
 	    <td colspan="2">Tensão Rede (Entrada)</td><td align="center" id="tensaok">-----</td>
 	    <td> <button type="button" onclick="loadXMLDoc('cmd=0020')" class="botao">Reinicia Agente</button></td>
     </tr>
 
 	  <tr class="linha"><!-- Linha 14 -->
-	    <td colspan="2">Estado Caixa d'Água</td><td align="center" id="estcxaz">-----</td>
-	    <td colspan="2">Potência Total Cg 24Vcc</td><td align="center" id="wtotcg">-----</td>
+	    <td colspan="2">Corrente Geladeira</td><td align="center" id="icg3">-----</td>
+	    <td colspan="2">Corrente Total Cg 24Vcc</td><td align="center" id="itotcg">-----</td>
 	    <td colspan="2">Potência Ativa Rede</td><td align="center" id="potativk">-----</td>
 	    <td> <button type="button" onclick="loadXMLDoc('cmd=0021')" class="botao">Reservado</button></td>
     </tr>
 
 	  <tr class="linha"><!-- Linha 15 -->
-	    <td colspan="2">Nível da Caixa d'Água</td><td align="center" id="nivcxaz">-----</td>
-	    <td colspan="2">Estado Fontes CC</td><td align="center" id="estft1">-----</td>
+	    <td colspan="2">Estado Caixa d'Água</td><td align="center" id="estcxaz">-----</td>
+	    <td colspan="2">Potência Total Cg 24Vcc</td><td align="center" id="wtotcg">-----</td>
 	    <td colspan="2">Fator de Potência Rede</td><td align="center" id="fatpotk">-----</td>
 	    <td> <button type="button" onclick="loadXMLDoc('cmd=0022')" class="botao">Reservado</button></td>
 	  </tr>
 
 	  <tr class="linha"><!-- Linha 16 -->
-	    <td colspan="2">Estado Bomba Poço</td><td align="center" id="estbmb">-----</td>
-	    <td colspan="2">Conexão Controlador AQ</td><td align="center" id="estuaq">-----</td>
+	    <td colspan="2">Nível da Caixa d'Água</td><td align="center" id="nivcxaz">-----</td>
+	    <td colspan="2">Estado Fontes CC</td><td align="center" id="estft1">-----</td>
 	    <td colspan="2">Potência Gerada (Solar)</td><td align="center" id="potenciai">-----</td>
 	    <td><button type="button" onclick="loadXMLDoc('cmd=0023')" class="botao">Reservado</button></td>
 	  </tr>
 
 	  <tr class="linha"><!-- Linha 17 -->
-	    <td colspan="2">Disjuntor da Bóia</td><td align="center" id="estdjb">-----</td>
-	    <td colspan="2">Temperatura Boiler</td><td align="center" id="tempbl">-----</td>
+	    <td colspan="2">Estado Bomba Poço</td><td align="center" id="estbmb">-----</td>
+	    <td colspan="2">Conexão Controlador AQ</td><td align="center" id="estuaq">-----</td>
 	    <td colspan="2">Energia Consumida</td><td align="center" id="energiak">-----</td>
 	    <td><button type="button" class="botao">Reservado</button></td>
     </tr>
 
 	  <tr class="linha"><!-- Linha 18 -->
-	    <td colspan="2">Disjuntor Rede Bomba</td><td align="center" id="estdjrb">-----</td>
-	    <td colspan="2">Temperatura Placa Solar</td><td align="center" id="tempps">-----</td>
+	    <td colspan="2">Disjuntor da Bóia</td><td align="center" id="estdjb">-----</td>
+	    <td colspan="2">Temperatura Boiler</td><td align="center" id="tempbl">-----</td>
 	    <td colspan="2">Energia Exportada</td><td align="center" id="energiank" >-----</td>
 	    <td><button type="button" class="botao">Reservado</button></td>
  	  </tr>
 
 	  <tr class="linha"><!-- Linha 19 -->
-	    <td colspan="2">Energia Bomba Poço</td><td align="center" id="encg4">-----</td>
-	    <td colspan="2">Estado da Bomba AQ</td><td align="center" id="estbaq">-----</td>
+	    <td colspan="2">Disjuntor Rede Bomba</td><td align="center" id="estdjrb">-----</td>
+	    <td colspan="2">Temperatura Placa Solar</td><td align="center" id="tempps">-----</td>
 	    <td colspan="2">Corrente Serviço 24Vcc</td><td align="center" id="icircc">-----</td>
 	    <td><button type="button" class="botao">Reservado</button></td>
 	  </tr>
 
     <tr class="linha"><!-- Linha 20 -->
-	    <td colspan="2">Tempo Bomba Ligada</td><td align="center" id="tmpbl">-----</td>
-	    <td colspan="2">Estado do Aquecedor</td><td align="center" id="estaq">-----</td>
+	    <td colspan="2">Energia Bomba Poço</td><td align="center" id="encg4">-----</td>
+	    <td colspan="2">Estado da Bomba AQ</td><td align="center" id="estbaq">-----</td>
 	    <td colspan="2">Potência Serviço 24Vcc</td><td align="center" id="wcircc">-----</td>
 	    <td><button type="button" class="botao">Reservado</button></td>
 	  </tr>
 
     <tr class="linha"><!-- Linha 21 -->
+	    <td colspan="2">Tempo Bomba Ligada</td><td align="center" id="tmpbl">-----</td>
+	    <td colspan="2">Estado do Aquecedor</td><td align="center" id="estaq">-----</td>
+	    <td colspan="2">Reserva</td><td align="center" id="">-----</td>
+	    <td><button type="button" class="botao">Reservado</button></td>
+	  </tr>
+
+    <tr class="linha"><!-- Linha 22 -->
 	    <td colspan="2">Vazão Bomba Poço</td><td align="center" id="vzbmb">-----</td>
 	    <td colspan="2">Tempo Bomba AQ Ligada</td><td align="center" id="tmpbaql">-----</td>
 	    <td colspan="2">Reserva</td><td align="center" id="">-----</td>
 	    <td><button type="button" class="botao">Reservado</button></td>
 	  </tr>
 
-	  <tr class="linha"><!-- Linha 22 -->
+	  <tr class="linha"><!-- Linha 23 -->
 	    <td colspan="10" id="erro">
 	  </tr>
 	<script type="text/javascript" src="tabelasupjsnova.js"></script>

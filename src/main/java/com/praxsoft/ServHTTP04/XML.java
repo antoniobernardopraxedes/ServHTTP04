@@ -185,8 +185,8 @@ public class XML {
         MsgXMLArray[IdNv0][IdNv1][7][0] = "TMPBL";		MsgXMLArray[IdNv0][IdNv1][7][1] = FormAnaHora(utr.tmpBombaLig);
         MsgXMLArray[IdNv0][IdNv1][8][0] = "VZBMB";		MsgXMLArray[IdNv0][IdNv1][8][1] = caq.vazaoBombaPoco + "";
 
-        IdNv1 = 3; // Grupo de 18 Variáveis de Informação da Geração Solar e do Consumo
-        MsgXMLArray[IdNv0][IdNv1][0][0] = "GERCONS";	MsgXMLArray[IdNv0][IdNv1][0][1] = "18";
+        IdNv1 = 3; // Grupo de 19 Variáveis de Informação da Geração Solar e do Consumo
+        MsgXMLArray[IdNv0][IdNv1][0][0] = "GERCONS";	MsgXMLArray[IdNv0][IdNv1][0][1] = "19";
 
         MsgXMLArray[IdNv0][IdNv1][1][0] = "VP12";		MsgXMLArray[IdNv0][IdNv1][1][1] = cc1.vECc + "";
         MsgXMLArray[IdNv0][IdNv1][2][0] = "IS12";		MsgXMLArray[IdNv0][IdNv1][2][1] = cc1.iECc + "";
@@ -206,6 +206,7 @@ public class XML {
         MsgXMLArray[IdNv0][IdNv1][16][0] = "ESTFT2";	MsgXMLArray[IdNv0][IdNv1][16][1] = utr.estFontesCC;
         MsgXMLArray[IdNv0][IdNv1][17][0] = "ICIRCC";	MsgXMLArray[IdNv0][IdNv1][17][1] = utr.iCirCc + "";
         MsgXMLArray[IdNv0][IdNv1][18][0] = "WCIRCC";	MsgXMLArray[IdNv0][IdNv1][18][1] = utr.wCirCC + "";
+        MsgXMLArray[IdNv0][IdNv1][19][0] = "WTOTGRCC";	MsgXMLArray[IdNv0][IdNv1][19][1] = utr.wTotGerCC + "";
 
         IdNv1 = 4; // Grupo de 16 Variáveis de Informação dos Inversores 1 e 2
         MsgXMLArray[IdNv0][IdNv1][0][0] = "INV";		MsgXMLArray[IdNv0][IdNv1][0][1] = "16";

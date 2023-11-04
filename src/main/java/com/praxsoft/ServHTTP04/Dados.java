@@ -332,6 +332,7 @@ public class Dados {
                 // Carrega as variaveis com os valores das saidas digitais da UTR1
                 boolean Iv1Lig = SD[10] > 0; // Iv2Lig = SD[10] > 0;
                 boolean Iv2Lig = SD[1] > 0;  // Iv1Lig = SD[1] > 0;
+                boolean Carga4Inv2 = SD[3] > 0;
                 if (Iv2Lig) { utr.estInvD = "Ligado"; } else { utr.estInvD = "Desligado"; }
                 if (Iv1Lig) { utr.estInvE = "Ligado"; } else { utr.estInvE = "Desligado"; }
 
@@ -388,7 +389,7 @@ public class Dados {
 
                 // Energia Bomba de Água do Poço
                 utr.energiaCg4 = "Rede";
-                if (Iv2Lig) { utr.energiaCg4 = "Inversor 2"; }
+                if (Carga4Inv2) { utr.energiaCg4 = "Inversor 1"; }
                 else { if (HabCarga4) { utr.energiaCg4 = "Rede (Hab)"; } }
 
                 if (EstRede) {
@@ -457,13 +458,14 @@ public class Dados {
                     utr.iSInvD = 0;    // zera a corrente de saída
                 }
 
-                // Variáveis Calculadas utr.iTotCg24v = FormataDouble2CD(ITotCg);
+                // Variáveis Calculadas
                 utr.wEInvD = FormataDouble2CD(utr.vBat * utr.iEInvD);    // Potencia de Entrada do Inversor 2 (Med[38])
                 utr.wSInvD = FormataDouble2CD(utr.vSInvD * utr.iSInvD);  // Potencia de Saida do Inversor 2 (Med[39])
                 utr.wEInvE = FormataDouble2CD(utr.vBat * utr.iEInvE);    // Potência de Entrada do Inversor 1 (Med[41])
                 utr.wSInvE = FormataDouble2CD(utr.vSInvE * utr.iSInvE);  // Potencia de Saida do Inversor 1 (Med[42])
                 utr.iTotCg24v = FormataDouble2CD(utr.iEInvE + utr.iEInvD + utr.iCirCc);  // Corrente Total Consumida pelas Cargas
                 utr.wTotCg24v = FormataDouble2CD(utr.wEInvE + utr.wEInvD + utr.wCirCC);  // Potência Total Consumida pelas Cargas
+                utr.wTotGerCC = cc1.wSCc + cc2.wSCc;
             }
         }
 

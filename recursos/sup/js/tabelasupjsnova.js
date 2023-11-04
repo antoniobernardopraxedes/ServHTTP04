@@ -128,8 +128,8 @@
       document.getElementById("encg2").innerHTML = valor;
       valor = geral[i].getElementsByTagName("ENCG3")[0].childNodes[0].nodeValue;
       document.getElementById("encg3").innerHTML = valor;
-      //valor = geral[i].getElementsByTagName("ICG3")[0].childNodes[0].nodeValue;
-      //document.getElementById("icg3").innerHTML = valor;
+      valor = geral[i].getElementsByTagName("ICG3")[0].childNodes[0].nodeValue;
+      document.getElementById("icg3").innerHTML = valor + " mA";
       valor = geral[i].getElementsByTagName("VBAT")[0].childNodes[0].nodeValue;
       document.getElementById("vbat").innerHTML = valor + " V";
       valor = geral[i].getElementsByTagName("VREDE")[0].childNodes[0].nodeValue;
@@ -166,7 +166,7 @@
       document.getElementById("encg1").innerHTML = valor;
       document.getElementById("encg2").innerHTML = valor;
       document.getElementById("encg3").innerHTML = valor;
-      //document.getElementById("icg3").innerHTML = valor;
+      document.getElementById("icg3").innerHTML = valor;
       document.getElementById("vbat").innerHTML = valor;
       document.getElementById("vrede").innerHTML = valor;
       document.getElementById("estvrd").innerHTML = valor;
@@ -271,6 +271,8 @@
       document.getElementById("icircc").innerHTML = valor + " A";
       valor = gercons[i].getElementsByTagName("WCIRCC")[0].childNodes[0].nodeValue;
       document.getElementById("wcircc").innerHTML = valor + " W";
+      valor = gercons[i].getElementsByTagName("WTOTGRCC")[0].childNodes[0].nodeValue;
+      document.getElementById("wtotgrcc").innerHTML = valor + " W";
     }
 
     //******************************************************************************************************************
@@ -300,6 +302,7 @@
       document.getElementById("estft1").innerHTML = valor;
       document.getElementById("icircc").innerHTML = valor;
       document.getElementById("wcircc").innerHTML = valor;
+      document.getElementById("wtotgrcc").innerHTML = valor;
 
     }
 
