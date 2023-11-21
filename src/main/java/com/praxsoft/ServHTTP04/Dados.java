@@ -465,7 +465,7 @@ public class Dados {
                 utr.wSInvE = FormataDouble2CD(utr.vSInvE * utr.iSInvE);  // Potencia de Saida do Inversor 1 (Med[42])
                 utr.iTotCg24v = FormataDouble2CD(utr.iEInvE + utr.iEInvD + utr.iCirCc);  // Corrente Total Consumida pelas Cargas
                 utr.wTotCg24v = FormataDouble2CD(utr.wEInvE + utr.wEInvD + utr.wCirCC);  // Potência Total Consumida pelas Cargas
-                utr.wTotGerCC = cc1.wSCc + cc2.wSCc;
+                utr.wTotGerCC = FormataDouble2CD(cc1.wSCc + cc2.wSCc);
             }
         }
 
