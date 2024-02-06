@@ -293,9 +293,8 @@ public class SupService {
                 else {
                     paragrafo = paragrafo + linha;
                 }
-
-            }
-            return arrayListParagrafo;
+           }
+           return arrayListParagrafo;
 
         } catch (IOException e) {
             return null;

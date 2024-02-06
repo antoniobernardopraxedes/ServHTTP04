@@ -150,7 +150,7 @@ public class XML {
         MsgXMLArray[IdNv0][IdNv1][0][0] = "LOCAL001";	MsgXMLArray[IdNv0][IdNv1][0][1] = "06";
 
         IdNv1 = 1;
-        MsgXMLArray[IdNv0][IdNv1][i][0] = "GERAL";		MsgXMLArray[IdNv0][IdNv1][i++][1] = "20";
+        MsgXMLArray[IdNv0][IdNv1][i][0] = "GERAL";		MsgXMLArray[IdNv0][IdNv1][i++][1] = "22";
 
         MsgXMLArray[IdNv0][IdNv1][i][0] = "COMCNV";		MsgXMLArray[IdNv0][IdNv1][i++][1] = "Normal";
         MsgXMLArray[IdNv0][IdNv1][i][0] = "COMCNC";		MsgXMLArray[IdNv0][IdNv1][i++][1] = ImpEstCom(utr.estComConcMega);
@@ -167,11 +167,13 @@ public class XML {
         MsgXMLArray[IdNv0][IdNv1][i][0] = "ENCG1";		MsgXMLArray[IdNv0][IdNv1][i++][1] = utr.energiaCg1;
         MsgXMLArray[IdNv0][IdNv1][i][0] = "ENCG2";		MsgXMLArray[IdNv0][IdNv1][i++][1] = utr.energiaCg2;
         MsgXMLArray[IdNv0][IdNv1][i][0] = "ENCG3";		MsgXMLArray[IdNv0][IdNv1][i++][1] = utr.energiaCg3;
+        MsgXMLArray[IdNv0][IdNv1][i][0] = "ENCG4";		MsgXMLArray[IdNv0][IdNv1][i++][1] = utr.energiaCg4;
         MsgXMLArray[IdNv0][IdNv1][i][0] = "ICG3";		MsgXMLArray[IdNv0][IdNv1][i++][1] = utr.iCg3 + "";
         MsgXMLArray[IdNv0][IdNv1][i][0] = "VBAT";		MsgXMLArray[IdNv0][IdNv1][i++][1] = utr.vBat + "";
         MsgXMLArray[IdNv0][IdNv1][i][0] = "VREDE";		MsgXMLArray[IdNv0][IdNv1][i++][1] = utr.vRede + "";
         MsgXMLArray[IdNv0][IdNv1][i][0] = "ESTVRD";		MsgXMLArray[IdNv0][IdNv1][i++][1] = utr.estRede;
         MsgXMLArray[IdNv0][IdNv1][i][0] = "TBAT";		MsgXMLArray[IdNv0][IdNv1][i++][1] = utr.tBat + "";
+        MsgXMLArray[IdNv0][IdNv1][i][0] = "VFCC";		MsgXMLArray[IdNv0][IdNv1][i++][1] = utr.vFontes + "";
 
         IdNv1 = 2; // Grupo de 08 Variáveis de Informação da Bomba do Poço e da Caixa Azul
         MsgXMLArray[IdNv0][IdNv1][0][0] = "AGUA";		MsgXMLArray[IdNv0][IdNv1][0][1] = "08";
@@ -181,7 +183,7 @@ public class XML {
         MsgXMLArray[IdNv0][IdNv1][3][0] = "ESTBMB";		MsgXMLArray[IdNv0][IdNv1][3][1] = utr.estBomba;
         MsgXMLArray[IdNv0][IdNv1][4][0] = "ESTDJB";		MsgXMLArray[IdNv0][IdNv1][4][1] = utr.estDjBoia;
         MsgXMLArray[IdNv0][IdNv1][5][0] = "ESTDJRB";	MsgXMLArray[IdNv0][IdNv1][5][1] = utr.estDjBomba;
-        MsgXMLArray[IdNv0][IdNv1][6][0] = "ENBMB";		MsgXMLArray[IdNv0][IdNv1][6][1] = utr.energiaCg4;
+        MsgXMLArray[IdNv0][IdNv1][6][0] = "ENBMB";		MsgXMLArray[IdNv0][IdNv1][6][1] = utr.energiaCg5;
         MsgXMLArray[IdNv0][IdNv1][7][0] = "TMPBL";		MsgXMLArray[IdNv0][IdNv1][7][1] = FormAnaHora(utr.tmpBombaLig);
         MsgXMLArray[IdNv0][IdNv1][8][0] = "VZBMB";		MsgXMLArray[IdNv0][IdNv1][8][1] = caq.vazaoBombaPoco + "";
 
@@ -256,6 +258,7 @@ public class XML {
 
         // Retorna a Mensagem XML completa em formato de String
         String MsgXML = StringXML(MsgXMLArray) + "  ";
+        //System.out.println(MsgXML);
         return (MsgXML);
     }
 

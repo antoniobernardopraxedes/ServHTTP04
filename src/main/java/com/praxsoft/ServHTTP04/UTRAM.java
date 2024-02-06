@@ -23,12 +23,14 @@ public class UTRAM {
     public double vRede;
     public String estRede;
     public double vBat;
+    public double vFontes;
     public double vmBat;
     public double tBat;
     public String energiaCg1;
     public String energiaCg2;
     public String energiaCg3;
-    public String energiaCg4;
+    public String energiaCg4;  // Geladeira
+    public String energiaCg5;  // Bomba d´Agua
     public double iCg3;
     public double iTotCg24v;
     public double wTotCg24v;

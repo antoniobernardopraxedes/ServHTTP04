@@ -128,8 +128,10 @@
       document.getElementById("encg2").innerHTML = valor;
       valor = geral[i].getElementsByTagName("ENCG3")[0].childNodes[0].nodeValue;
       document.getElementById("encg3").innerHTML = valor;
+      valor = geral[i].getElementsByTagName("ENCG4")[0].childNodes[0].nodeValue;
+      document.getElementById("encg4").innerHTML = valor;
       valor = geral[i].getElementsByTagName("ICG3")[0].childNodes[0].nodeValue;
-      document.getElementById("icg3").innerHTML = valor + " mA";
+      document.getElementById("icg3").innerHTML = valor + " A";
       valor = geral[i].getElementsByTagName("VBAT")[0].childNodes[0].nodeValue;
       document.getElementById("vbat").innerHTML = valor + " V";
       valor = geral[i].getElementsByTagName("VREDE")[0].childNodes[0].nodeValue;
@@ -166,6 +168,7 @@
       document.getElementById("encg1").innerHTML = valor;
       document.getElementById("encg2").innerHTML = valor;
       document.getElementById("encg3").innerHTML = valor;
+      document.getElementById("encg4").innerHTML = valor;
       document.getElementById("icg3").innerHTML = valor;
       document.getElementById("vbat").innerHTML = valor;
       document.getElementById("vrede").innerHTML = valor;
@@ -190,16 +193,16 @@
       document.getElementById("nivcxaz").innerHTML = valor;
       valor = agua[i].getElementsByTagName("ESTBMB")[0].childNodes[0].nodeValue;
       document.getElementById("estbmb").innerHTML = valor;
-      valor = agua[i].getElementsByTagName("ESTDJB")[0].childNodes[0].nodeValue;
-      document.getElementById("estdjb").innerHTML = valor;
+      //valor = agua[i].getElementsByTagName("ESTDJB")[0].childNodes[0].nodeValue;
+      //document.getElementById("estdjb").innerHTML = valor;
       valor = agua[i].getElementsByTagName("ESTDJRB")[0].childNodes[0].nodeValue;
       document.getElementById("estdjrb").innerHTML = valor;
       valor = agua[i].getElementsByTagName("ENBMB")[0].childNodes[0].nodeValue;
-      document.getElementById("encg4").innerHTML = valor;
+      document.getElementById("enbmb").innerHTML = valor;
       valor = agua[i].getElementsByTagName("TMPBL")[0].childNodes[0].nodeValue;
       document.getElementById("tmpbl").innerHTML = valor;
-      valor = agua[i].getElementsByTagName("VZBMB")[0].childNodes[0].nodeValue;
-      document.getElementById("vzbmb").innerHTML = valor;
+      //valor = agua[i].getElementsByTagName("VZBMB")[0].childNodes[0].nodeValue;
+      //document.getElementById("vzbmb").innerHTML = valor;
 
     }
 
@@ -215,11 +218,11 @@
       document.getElementById("estcxaz").innerHTML = valor;
       document.getElementById("nivcxaz").innerHTML = valor;
       document.getElementById("estbmb").innerHTML = valor;
-      document.getElementById("estdjb").innerHTML = valor;
+      //document.getElementById("estdjb").innerHTML = valor;
       document.getElementById("estdjrb").innerHTML = valor;
-      document.getElementById("encg4").innerHTML = valor;
+      document.getElementById("enbmb").innerHTML = valor;
       document.getElementById("tmpbl").innerHTML = valor;
-      document.getElementById("vzbmb").innerHTML = valor;
+      //document.getElementById("vzbmb").innerHTML = valor;
     }
 
     //******************************************************************************************************************

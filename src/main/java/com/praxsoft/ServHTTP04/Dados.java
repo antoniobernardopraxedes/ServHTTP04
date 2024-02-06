@@ -81,6 +81,7 @@ public class Dados {
             utr.energiaCg2 = "-----";
             utr.energiaCg3 = "-----";
             utr.energiaCg4 = "-----";
+            utr.energiaCg5 = "-----";
             utr.iCg3 = 0;
             utr.iTotCg24v = 0;
             utr.wTotCg24v = 0;
@@ -306,7 +307,7 @@ public class Dados {
                 boolean HabCarga2 = receiveData1[47] > 0;
                 boolean HabCarga3 = receiveData1[48] > 0;
                 boolean HabCarga4 = receiveData1[49] > 0;
-                boolean EstadoCarga3 = receiveData1[53] > 0;
+                boolean EstadoCarga4 = receiveData1[53] > 0;     // Estado da Carga4 (Geladeira) Ligado / Desligado
                 boolean FontesCCLigadas = receiveData1[73] > 0;
                 boolean EstadoInversor1 = receiveData1[51] > 0;
                 boolean DJEINV1 = receiveData1[37] > 0;
@@ -332,18 +333,23 @@ public class Dados {
                 // Carrega as variaveis com os valores das saidas digitais da UTR1
                 boolean Iv1Lig = SD[10] > 0; // Iv2Lig = SD[10] > 0;
                 boolean Iv2Lig = SD[1] > 0;  // Iv1Lig = SD[1] > 0;
-                boolean Carga4Inv2 = SD[3] > 0;
+
+                boolean Carga4Inv2 = false; //SD[3] > 0;
+
                 if (Iv2Lig) { utr.estInvD = "Ligado"; } else { utr.estInvD = "Desligado"; }
                 if (Iv1Lig) { utr.estInvE = "Ligado"; } else { utr.estInvE = "Desligado"; }
 
-                if (SD[17] > 0) { utr.energiaCg1 = "Inversor 1"; }
+                if (SD[17] > 0) { utr.energiaCg1 = "Inversor D"; }
                 else { if (HabCarga1) { utr.energiaCg1 = "Rede (Inv)"; } else { utr.energiaCg1 = "Rede"; } }
 
-                if (SD[0] > 0) { utr.energiaCg2 = "Inversor 1"; }
+                if (SD[0] > 0) { utr.energiaCg2 = "Inversor D"; }
                 else { if (HabCarga2) { utr.energiaCg2 = "Rede (Inv)"; } else { utr.energiaCg2 = "Rede"; } }
 
-                if (SD[2] > 0) { utr.energiaCg3 = "Inversor 1"; }
+                if (SD[2] > 0) { utr.energiaCg3 = "Inversor D"; }
                 else { utr.energiaCg3 = "Rede"; }
+
+                if (SD[3] > 0) { utr.energiaCg4 = "Inversor E"; }
+                else { utr.energiaCg4 = "Rede"; }
 
                 if (EstRede) {
                     if (receiveData1[41] > 0) { utr.estDjBomba = "Ligado"; } else { utr.estDjBomba = "Desligado"; }
@@ -388,9 +394,9 @@ public class Dados {
                 }
 
                 // Energia Bomba de Água do Poço
-                utr.energiaCg4 = "Rede";
-                if (Carga4Inv2) { utr.energiaCg4 = "Inversor 1"; }
-                else { if (HabCarga4) { utr.energiaCg4 = "Rede (Hab)"; } }
+                utr.energiaCg5 = "Rede";
+                if (Carga4Inv2) { utr.energiaCg5 = "Inversor 1"; }
+                else { if (HabCarga4) { utr.energiaCg5 = "Rede (Hab)"; } }
 
                 if (EstRede) {
                     if (FontesCCLigadas) { utr.estFontesCC = "Ligadas"; } else { utr.estFontesCC = "Desligadas"; }
@@ -410,6 +416,7 @@ public class Dados {
 
                 // Carrega as medidas lidas do Concentrador Arduino Mega nas variaveis
                 utr.vBat = Med[0] / 100.0;         // Tensão do Banco de Baterias
+                utr.vFontes = Med[1] / 100.0;      // Tensão das 3 Fontes CC ligadas em série
                 utr.tDInvD = Med[2] / 100.0;       // Temperatura do Driver do Inversor 2 (8)
                 utr.iCirCc = Med[3] / 1000.0;      // Corrente Total dos Circuitos CC
                 utr.vSInvD = Med[4] / 100.0;       // Tensão de Saída do Inversor 2
