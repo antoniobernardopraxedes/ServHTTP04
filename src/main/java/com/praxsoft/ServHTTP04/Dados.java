@@ -348,8 +348,27 @@ public class Dados {
                 if (SD[2] > 0) { utr.energiaCg3 = "Inversor D"; }
                 else { utr.energiaCg3 = "Rede"; }
 
-                if (SD[3] > 0) { utr.energiaCg4 = "Inversor E"; }
-                else { utr.energiaCg4 = "Rede"; }
+                if (SD[3] > 0) {                            // Se a CT4 está para o Inversor1,
+                    if (HabCarga4) {                        // e se a Carga4 está habilitada,
+                        if (EstadoInversor1) {              // e se o Inversor1 está ligado e normal
+                            utr.energiaCg4 = "Inversor E";  // Indica Carga4 alimentada pelo Inversor E
+                        }
+                        else {                              // Se CT4 está para o Inversor1 que está desligado,
+                            utr.energiaCg4 = "Desligada";   // indica Carga4 desligada.
+                        }
+                    }
+                    else {                    // Se a CT4 está para o Inversor1 mas a Carga4 está desabilitada,
+                        utr.energiaCg4 = "Desligada";  // indica a Carga4 desabilitada.
+                    }
+                }
+                else {
+                    if (HabCarga4) {
+                        utr.energiaCg4 = "Rede Hab";
+                    }
+                    else {
+                        utr.energiaCg4 = "Rede";
+                    }
+                }
 
                 if (EstRede) {
                     if (receiveData1[41] > 0) { utr.estDjBomba = "Ligado"; } else { utr.estDjBomba = "Desligado"; }
