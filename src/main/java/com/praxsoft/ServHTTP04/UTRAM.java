@@ -38,6 +38,7 @@ public class UTRAM {
     public double wCirCC;
     public double wTotGerCC;
     public String estFontesCC;
+    public String ModoGeracao;
 
     // EStados e Medidas dos Inversores 1 e 2
     public String estInvD;

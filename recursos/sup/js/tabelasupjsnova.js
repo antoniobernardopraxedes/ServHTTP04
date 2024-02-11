@@ -138,6 +138,8 @@
       document.getElementById("vrede").innerHTML = valor + " V";
       valor = geral[i].getElementsByTagName("ESTVRD")[0].childNodes[0].nodeValue;
       document.getElementById("estvrd").innerHTML = valor;
+      valor = geral[i].getElementsByTagName("MDGER")[0].childNodes[0].nodeValue;
+      document.getElementById("mdger").innerHTML = valor;
       //valor = geral[i].getElementsByTagName("TBAT")[0].childNodes[0].nodeValue;
       //document.getElementById("tbat").innerHTML = valor;
       //valor = geral[i].getElementsByTagName("SDBAT")[0].childNodes[0].nodeValue;
@@ -173,6 +175,7 @@
       document.getElementById("vbat").innerHTML = valor;
       document.getElementById("vrede").innerHTML = valor;
       document.getElementById("estvrd").innerHTML = valor;
+      document.getElementById("mdger").innerHTML = valor;
       //document.getElementById("tbat").innerHTML = valor;
 
     }

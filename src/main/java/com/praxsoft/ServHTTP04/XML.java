@@ -150,7 +150,7 @@ public class XML {
         MsgXMLArray[IdNv0][IdNv1][0][0] = "LOCAL001";	MsgXMLArray[IdNv0][IdNv1][0][1] = "06";
 
         IdNv1 = 1;
-        MsgXMLArray[IdNv0][IdNv1][i][0] = "GERAL";		MsgXMLArray[IdNv0][IdNv1][i++][1] = "22";
+        MsgXMLArray[IdNv0][IdNv1][i][0] = "GERAL";		MsgXMLArray[IdNv0][IdNv1][i++][1] = "23";
 
         MsgXMLArray[IdNv0][IdNv1][i][0] = "COMCNV";		MsgXMLArray[IdNv0][IdNv1][i++][1] = "Normal";
         MsgXMLArray[IdNv0][IdNv1][i][0] = "COMCNC";		MsgXMLArray[IdNv0][IdNv1][i++][1] = ImpEstCom(utr.estComConcMega);
@@ -174,6 +174,7 @@ public class XML {
         MsgXMLArray[IdNv0][IdNv1][i][0] = "ESTVRD";		MsgXMLArray[IdNv0][IdNv1][i++][1] = utr.estRede;
         MsgXMLArray[IdNv0][IdNv1][i][0] = "TBAT";		MsgXMLArray[IdNv0][IdNv1][i++][1] = utr.tBat + "";
         MsgXMLArray[IdNv0][IdNv1][i][0] = "VFCC";		MsgXMLArray[IdNv0][IdNv1][i++][1] = utr.vFontes + "";
+        MsgXMLArray[IdNv0][IdNv1][i][0] = "MDGER";		MsgXMLArray[IdNv0][IdNv1][i++][1] = utr.ModoGeracao + "";
 
         IdNv1 = 2; // Grupo de 08 Variáveis de Informação da Bomba do Poço e da Caixa Azul
         MsgXMLArray[IdNv0][IdNv1][0][0] = "AGUA";		MsgXMLArray[IdNv0][IdNv1][0][1] = "08";

@@ -313,6 +313,7 @@ public class Dados {
                 boolean DJEINV1 = receiveData1[37] > 0;
                 boolean EstadoInversor2 = receiveData1[52] > 0;
                 boolean BoiaCxAzul = receiveData1[39] > 0;
+                boolean OpOffGrid = receiveData1[71] > 0;
 
                 // Le o estado das saidas digitais
                 int NumSd = 32;
@@ -329,6 +330,7 @@ public class Dados {
                 if (receiveData1[45] > 0) { utr.modoCtrl = "Hab"; } else { utr.modoCtrl = "     "; }
                 if (receiveData1[38] > 0) { utr.estDjBoia = "Ligado"; } else { utr.estDjBoia = "Desligado"; }
                 if (receiveData1[40] > 0) { utr.estBomba = "Ligada"; } else { utr.estBomba = "Desligada"; }
+                if (OpOffGrid) { utr.ModoGeracao = "Off Grid"; } else { utr.ModoGeracao = "On Grid"; }
 
                 // Carrega as variaveis com os valores das saidas digitais da UTR1
                 boolean Iv1Lig = SD[10] > 0; // Iv2Lig = SD[10] > 0;

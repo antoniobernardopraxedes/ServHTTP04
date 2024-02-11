@@ -3,9 +3,9 @@ package com.praxsoft.ServHTTP04;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
-import java.net.DatagramPacket;
-import java.net.DatagramSocket;
-import java.net.InetAddress;
+//import java.net.DatagramPacket;
+//import java.net.DatagramSocket;
+//import java.net.InetAddress;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -457,45 +457,10 @@ public class SupService {
     // Saida: array com 6 Bytes: [0] = Hora, [1] = Minuto, [2] = Segundo, [3] = Dia, [4] = Mês, [5] = Ano              *                                                                                 *
     //******************************************************************************************************************
     //
-    static byte[] LeDataHoraNTP() {
+    //static byte[] LeDataHoraNTP() {
 
-        String EndIP = "132.163.97.5";
-        int Porta = 123;
 
-        byte[] MsgReqNTP = new byte[16];
-        int TamMsgReq = MsgReqNTP.length;
-
-        byte[] MsgRecNTP = new byte[16];
-        int TamMsgRecNTP = MsgRecNTP.length;
-
-        try {
-
-            DatagramSocket clientSocket = new DatagramSocket();
-            InetAddress IPAddress = InetAddress.getByName(EndIP);
-            clientSocket.setSoTimeout(1000);
-            DatagramPacket sendPacket = new DatagramPacket(MsgReqNTP, TamMsgReq, IPAddress, Porta);
-            DatagramPacket receivePacket = new DatagramPacket(MsgRecNTP, TamMsgRecNTP);
-
-            clientSocket.send(sendPacket);
-            Terminal("Enviada Requisicao NTP", false);
-
-            // Espera a Mensagem CoAP de Resposta.
-            try {
-                clientSocket.receive(receivePacket);      // Se a mensagem de resposta  for recebida corretamente,
-
-                Terminal("Recebida Mensagem CoAP do Controlador", false);
-                clientSocket.close();
-
-            } catch (java.net.SocketTimeoutException e) { // Se o dispositivo não respondeu,
-
-                Terminal(" - Erro: o Dispositivo nao Respondeu ", false);
-                clientSocket.close();
-            }
-
-        } catch (IOException err) {        }
-        byte DH [] = new byte[7];
-        return(DH);
-    }
+    //}
 
     //*****************************************************************************************************************
     // Nome do Método: ImprimeHoraData                                                                                *
@@ -571,6 +536,8 @@ public class SupService {
         if (Comando == 13) { StrComando = "Habilita Carga 4"; }
         if (Comando == 14) { StrComando = "Desabilita Carga 4"; }
         if (Comando == 15) { StrComando = "Apaga Indicadores de Falha"; }
+        if (Comando == 18) { StrComando = "Modo de Geração On Grid"; }
+        if (Comando == 19) { StrComando = "Modo de Geração Off Grid"; }
         if (Comando == 20) { StrComando = "Reinicia Assinatura Agente"; }
 
         return(StrComando);
